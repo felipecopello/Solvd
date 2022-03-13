@@ -1,0 +1,60 @@
+hasta ahora programamos poniendo todo el codigo en el metodo main,
+en codigos grandes no es sostenible.
+
+las multiples tareas las voy separando en diferentes funciones. en OOP
+lo voy haciendo con objetos
+
+lo hacemos asi SOLO por organizacion
+
+caracteristicas del POO:HERENCIA, ENCAPSULACION Y POLIMORFISMO
+con la encapsulacion oculto el codigo del obj del uso externo
+
+la clase tendra atributos y metodos. el constructor es un metodo tiene el 
+nombre de la clase, y construye un objeto de esa clase. la clase es el plano del obj
+cuando hablamos del objeto hablamos de la construccion real
+
+en java podemos armar un objeto sin el constructor, y java va a asignarle uno default
+para acceder a los atributos y metodos del objeto usamos el nombre del obj.metodo()
+
+si queremos que el obj inicializado tenga ciertos valores, TENGO que generar el 
+constructor, sino va a tener valores default, le especifico al metodo los parametros
+que le voy a pasar cuando lo inicialice, tiene que tener los mismos nombres que los atributos
+y luego especifico con el metodo del atributo, que debe ser como el que le pase. es decir
+plane.model=model. cuando le pase el modelo va a iniciarse con lo que le pase. SI
+overload el constructor, el default no funciona mas
+
+OVERLOADING es cuando llamamos a dos metodos iguales, pero a uno le pasamos parametros
+y al otro no, mismo nombre con diferentes parametros o (signature)
+
+ejemplo del cliente que compra algo, clase cliente con sus atributos que lo identifican
+y para pagar tendria el metodo pagar, pero el overloading seria para pagar de diversos
+metodos con el mismo nombre pagar()
+
+ENCAPSULACION: las manejo con los access modifiers
+HAY que especificar si usamos un modificador de acceso que no sea private
+no deberiamos permitir que haya acceso directo a los campos de mi clase, hay que encapsularlos
+hay 4 modificadores de acceso:
+1- si no ponemos nada se accede desde heredar, extender o desde la misma pagina de la app
+2- private, si ponemos private no puedo acceder desde plane.model. SOLO podria acceder
+desde el constructor
+3- public se accede a ese campo desde cualquier lugar
+4- protected, puedo acceder desde la misma clase y desde las que le extiendo, PERO no
+lo puedo modificar
+
+
+TODOS los campos deberian ser privados, si los campos son privados y no puedo acceder a ellos
+tengo que establecer por cada campo SETTERS Y GETTERS. estos son publicos
+setModel(String model), para modificar el model del avion. el getter SI debe tener 
+un return entonces le pongo public + str (lo que devuelve)
+
+podemos usar una clase para el campo de otra clase, ej clases plane y engine
+1-FIELDS
+2-CONSTRUCTOR (DEFAULT Y OVERLOAD)
+3-METHODS
+
+TAREA PARA EL MARTES:
+refactorizar los sorts para adaptar al input de lo que pone el usuario letras, etc.
+SOLO el metodo main sea publico y los demas seran privados. divido el proceso en varias clases. primero una clase para el 
+menu, otra clase para leer lo que envian, otra clase para ordenar.
+
+
