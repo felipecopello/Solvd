@@ -49,21 +49,18 @@ class Menu {
 		System.out.format("Please select the sorting method: %nEnter 1 for Bubble sort %nEnter 2 for Quick sort");
 		int option = sc.nextInt();
 
-		if (option == 1 || option == 2) {
+		if (option == 1) {
 			myMenu.setChosenOption(option);
 			System.out.println("You selected option: " + myMenu.getChosenOption());
+			getArray();
+			BubbleSortDemo.bubbleAscending(myMenu.arrayToSort);
+		} else if (option == 2) {
+			myMenu.setChosenOption(option);
+			System.out.println("You selected option: " + myMenu.getChosenOption());
+			System.out.println("You selected option: Quick sort ");
 		} else {
 			throw new ArrayIndexOutOfBoundsException("Selected option is not in the menu.");
 		}
 
-		getArray();
-
-		if (myMenu.chosenOption == 1) {
-			BubbleSortDemo.bubbleAscending(myMenu.arrayToSort);
-		}
-
-		else {
-
-		}
 	}
 }
