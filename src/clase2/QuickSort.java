@@ -56,6 +56,7 @@ class QuickSort {
 			quickSort(arr, low, pi - 1);
 			quickSort(arr, pi + 1, high);
 		}
+
 	}
 
 	// Function to print an array
@@ -67,8 +68,8 @@ class QuickSort {
 	}
 
 	// Driver Code
-	public static void main(String[] args) {
-		int[] arr = { 10, 7, 8, 9, 1, 5 };
+	public static void main(int[] arr) {
+		// int[] arr = { 10, 7, 8, 9, 1, 5 };
 		int n = arr.length;
 
 		quickSort(arr, 0, n - 1);
