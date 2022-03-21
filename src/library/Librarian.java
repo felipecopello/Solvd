@@ -42,13 +42,9 @@ public class Librarian extends People implements GroupedInterface {
 
 	public static void main(String[] args) {
 
-		String[] booksTaste2 = { "Philosophy", "Romantic novels" };
-		Clients client2 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste2, true);
-
 		String[] booksTaste3 = { "Philosophy", "Romantic novels" };
 		Clients client3 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste3, false);
 
-		recommendBook(client2);
 		recommendBook(client3);
 
 		IHelp l = new Librarian();

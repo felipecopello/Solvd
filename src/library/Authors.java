@@ -8,10 +8,9 @@ public class Authors extends People {
 	};
 
 	public Authors(String name, int age, int id, String[] writtenBooks, String genre) {
-		setName(name);
-		setAge(age);
-		setId(id);
+		super(name, age, id);
 		setWrittenBooks(writtenBooks);
+		setGenre(genre);
 	}
 
 	public String getGenre() {
