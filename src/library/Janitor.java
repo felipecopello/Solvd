@@ -8,10 +8,12 @@ public class Janitor extends People implements IHelp, IWork {
 		super(name, age, id);
 	}
 
+	@Override
 	public void work() {
 		System.out.format("%nCleaning the library");
 	}
 
+	@Override
 	public void helpClient() {
 		System.out.format("%nThe book you are looking for is over here");
 	}

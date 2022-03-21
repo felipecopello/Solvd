@@ -8,10 +8,12 @@ public class Librarian extends People implements GroupedInterface {
 		super(name, age, id);
 	}
 
+	@Override
 	public void helpClient() {
 		System.out.format("%nThe book you are looking for is over there");
 	}
 
+	@Override
 	public void work() {
 		System.out.format("%nOrganizing books");
 	}
@@ -39,15 +41,13 @@ public class Librarian extends People implements GroupedInterface {
 	};
 
 	public static void main(String[] args) {
-		String[] booksTaste1 = { "Crimes", "Romantic novels" };
-		Clients client1 = new Clients("Carlos Sanchez", 22, 3830544, booksTaste1, true);
 
 		String[] booksTaste2 = { "Philosophy", "Romantic novels" };
 		Clients client2 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste2, true);
 
 		String[] booksTaste3 = { "Philosophy", "Romantic novels" };
 		Clients client3 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste3, false);
-		recommendBook(client1);
+
 		recommendBook(client2);
 		recommendBook(client3);
 

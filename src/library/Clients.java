@@ -31,6 +31,10 @@ public class Clients extends People implements IRead {
 		this.bookTaste = bookTaste;
 	};
 
+	public void askBook() {
+		System.out.println("Hi! can you recommend me a book?");
+	}
+
 	public static void main(String[] args) {
 		String[] booksTaste = { "Crimes", "Romantic novels" };
 		Clients client1 = new Clients("Carlos Sanchez", 22, 3830544, booksTaste, true);

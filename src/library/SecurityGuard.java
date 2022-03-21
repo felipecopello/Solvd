@@ -8,10 +8,12 @@ public class SecurityGuard extends People implements IHelp, IWork {
 		super(name, age, id);
 	}
 
+	@Override
 	public void helpClient() {
 		System.out.format("%nThe section you are looking for is that way");
 	}
 
+	@Override
 	public void work() {
 		System.out.format("%nWatching the library");
 	}
