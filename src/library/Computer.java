@@ -1,0 +1,45 @@
+package library;
+
+public class Computer {
+	private int id;
+	private String model;
+	private String operatingSystem;
+
+	Computer() {
+	};
+
+	Computer(int id, String model, String operatingSystem) {
+		setId(id);
+		setModel(model);
+		setOperatingSystem(operatingSystem);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getOperatingSystem() {
+		return operatingSystem;
+	}
+
+	public void setOperatingSystem(String operatingSystem) {
+		this.operatingSystem = operatingSystem;
+	}
+
+	public static void main(String[] args) {
+		Computer computer1 = new Computer(2337, "Lg-265", "Windows 10");
+		System.out.println(computer1.getModel());
+	}
+}

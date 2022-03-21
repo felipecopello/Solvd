@@ -9,6 +9,9 @@ public abstract class People {
 	};
 
 	public People(String name, int age, int id) {
+		setName(name);
+		setAge(age);
+		setId(id);
 	};
 
 	public String getName() {

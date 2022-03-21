@@ -1,6 +1,6 @@
 package library;
 
-public class Clients extends People {
+public class Clients extends People implements IRead {
 	private String[] bookTaste;
 	private boolean libraryCard;
 
@@ -37,6 +37,7 @@ public class Clients extends People {
 		System.out.print("You should read Agatha Christie");
 		boolean card = client1.isLibraryCard();
 		System.out.print(card);
+		client1.read();
 	}
 
 }

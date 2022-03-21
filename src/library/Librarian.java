@@ -1,10 +1,19 @@
 package library;
 
-public class Librarian extends People {
+public class Librarian extends People implements GroupedInterface {
 	public Librarian() {
 	}
 
 	public Librarian(String name, int age, int id) {
+		super(name, age, id);
+	}
+
+	public void helpClient() {
+		System.out.format("%nThe book you are looking for is over there");
+	}
+
+	public void work() {
+		System.out.format("%nOrganizing books");
 	}
 
 	public static void recommendBook(Object o) {
@@ -41,5 +50,11 @@ public class Librarian extends People {
 		recommendBook(client1);
 		recommendBook(client2);
 		recommendBook(client3);
+
+		IHelp l = new Librarian();
+		l.helpClient();
+		Librarian librarian1 = new Librarian();
+		librarian1.read();
+		librarian1.work();
 	}
 }
