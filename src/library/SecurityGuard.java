@@ -1,6 +1,6 @@
 package library;
 
-public class SecurityGuard extends People implements IHelp, IWork {
+public class SecurityGuard extends People implements IHelp, IWork, IGreet {
 	public SecurityGuard() {
 	}
 
@@ -27,6 +27,7 @@ public class SecurityGuard extends People implements IHelp, IWork {
 		guard1.beQuiet();
 		guard1.helpClient();
 		guard1.work();
+		guard1.greet(guard1.getName());
 
 		IHelp g = new SecurityGuard();
 		g.helpClient();

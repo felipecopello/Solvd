@@ -1,6 +1,6 @@
 package library;
 
-public class Librarian extends People implements GroupedInterface {
+public class Librarian extends People implements GroupedInterface, IGreet {
 	public Librarian() {
 	}
 
@@ -44,7 +44,6 @@ public class Librarian extends People implements GroupedInterface {
 
 		String[] booksTaste3 = { "Philosophy", "Romantic novels" };
 		Clients client3 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste3, false);
-
 		recommendBook(client3);
 
 		IHelp l = new Librarian();
@@ -52,5 +51,6 @@ public class Librarian extends People implements GroupedInterface {
 		Librarian librarian1 = new Librarian();
 		librarian1.read();
 		librarian1.work();
+		librarian1.greet(librarian1.getName());
 	}
 }
