@@ -9,7 +9,6 @@ public class Service {
 		librarian1.recommendBook(client1);
 
 		librarian1.recieveNewClient();
-		// client.printBookTaste(client.getBookTaste());
 
 	}
 }

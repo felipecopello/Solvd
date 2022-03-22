@@ -74,17 +74,17 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 
 		String[] taste = ((Clients) client).getBookTaste();
 		boolean card = ((Clients) client).getLibraryCard();
-		String Crimes = "Crimes";
-		String Philosophy = "Philosophy";
+		String crimes = "Crimes";
+		String philosophy = "Philosophy";
 		String scyFy = "Science Fiction";
 
 		if (card == true) {
 			for (String x : taste) {
-				if (x == Crimes) {
-					System.out.format("%nIf you like " + Crimes + " you should read Agatha Christie");
-				} else if (x == Philosophy) {
-					System.out.format("%nIf you like " + Philosophy + " you should read Friederich Nietzche");
-				} else if (x == scyFy) {
+				if (x.equalsIgnoreCase(crimes)) {
+					System.out.format("%nIf you like " + crimes + " you should read Agatha Christie");
+				} else if (x.equalsIgnoreCase(philosophy)) {
+					System.out.format("%nIf you like " + philosophy + " you should read Friederich Nietzche");
+				} else if (x.equalsIgnoreCase(scyFy)) {
 					System.out.format("%nYou should read George Orwell");
 				}
 			}
@@ -113,5 +113,6 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		client1.setLibraryCard(librarian1.getClientLibraryCard());
 		System.out.println(client1.getName() + client1.getAge() + client1.getId() + client1.getBookTaste()
 				+ client1.getLibraryCard());
+		librarian1.recommendBook(client1);
 	};
 }
