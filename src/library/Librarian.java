@@ -1,5 +1,7 @@
 package library;
 
+import java.util.Scanner;
+
 public class Librarian extends People implements GroupedInterface, IGreet {
 	public Librarian() {
 	}
@@ -18,9 +20,60 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		System.out.format("%nOrganizing books");
 	}
 
-	public static void recommendBook(Object o) {
-		String[] taste = ((Clients) o).getBookTaste();
-		boolean card = ((Clients) o).isLibraryCard();
+	public String getClientName() {
+		Scanner sc = new Scanner(System.in);
+		System.out.format("%nEnter your name: ");
+		String clientName = sc.nextLine();
+		return clientName;
+	}
+
+	public int getClientAge() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your age: ");
+		int clientAge = sc.nextInt();
+		return clientAge;
+	}
+
+	public int getClientId() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your Id: ");
+		int clientId = sc.nextInt();
+		return clientId;
+	}
+
+	public String[] getClientBookTaste() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("¿How many book genres do you like?");
+		int length = sc.nextInt();
+		String[] clientBookTaste = new String[length];
+
+		System.out.println("¿What genres of books do you like?");
+
+		for (int i = 0; i < length; i++) {
+			String userInput = sc.next();
+			clientBookTaste[i] = userInput;
+		}
+
+		System.out.println("I like those books too");
+		return clientBookTaste;
+	}
+
+	public boolean getClientLibraryCard() {
+		String y = "yes";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("¿Do you have a library card? enter yes or no");
+		String userInput = sc.nextLine();
+		if (userInput == y) {
+			System.out.println("ok great");
+		} else {
+		}
+		return true;
+	}
+
+	public void recommendBook(Object client) {
+
+		String[] taste = ((Clients) client).getBookTaste();
+		boolean card = ((Clients) client).getLibraryCard();
 		String Crimes = "Crimes";
 		String Philosophy = "Philosophy";
 		String scyFy = "Science Fiction";
@@ -40,17 +93,25 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		}
 	};
 
-	public static void main(String[] args) {
-
-		String[] booksTaste3 = { "Philosophy", "Romantic novels" };
-		Clients client3 = new Clients("Pepe Gutierrez", 66, 8870533, booksTaste3, false);
-		recommendBook(client3);
-
-		IHelp l = new Librarian();
-		l.helpClient();
-		Librarian librarian1 = new Librarian();
-		librarian1.read();
-		librarian1.work();
-		librarian1.greet(librarian1.getName());
+	public void recieveNewClient() {
+		String name = getClientName();
+		int age = getClientAge();
+		int id = getClientId();
+		String[] bookTaste = getClientBookTaste();
+		Clients client = new Clients(name, age, id, bookTaste, true);
+		recommendBook(client);
 	}
+
+	public static void main(String[] args) {
+		Librarian librarian1 = new Librarian();
+
+		Clients client1 = new Clients();
+		client1.setName(librarian1.getClientName());
+		client1.setAge(librarian1.getClientAge());
+		client1.setId(librarian1.getClientId());
+		client1.setBookTaste(librarian1.getClientBookTaste());
+		client1.setLibraryCard(librarian1.getClientLibraryCard());
+		System.out.println(client1.getName() + client1.getAge() + client1.getId() + client1.getBookTaste()
+				+ client1.getLibraryCard());
+	};
 }

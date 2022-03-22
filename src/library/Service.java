@@ -1,11 +1,15 @@
 package library;
 
-public class EntryPoint {
+public class Service {
 	public static void main(String[] args) {
 		String[] booksTaste = { "Crimes", "Romantic novels" };
 		Clients client1 = new Clients("Carlos Sanchez", 22, 3830544, booksTaste, true);
-		client1.askBook();
 
-		Librarian.recommendBook(client1);
+		Librarian librarian1 = new Librarian();
+		librarian1.recommendBook(client1);
+
+		librarian1.recieveNewClient();
+		// client.printBookTaste(client.getBookTaste());
+
 	}
 }

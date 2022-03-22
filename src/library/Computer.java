@@ -38,8 +38,4 @@ public class Computer {
 		this.operatingSystem = operatingSystem;
 	}
 
-	public static void main(String[] args) {
-		Computer computer1 = new Computer(2337, "Lg-265", "Windows 10");
-		System.out.println(computer1.getModel());
-	}
 }

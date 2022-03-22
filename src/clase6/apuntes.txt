@@ -1,0 +1,58 @@
+EXCEPTIONS:
+Posibilidades fuera de nuestro codigo que pueden ocurrir. hay que definir las funciones que se deben ejecutar cuando se desata una exception. tienen
+una jerarquia. podemos crear las propias. hay tres tipos
+
+class THROWABLE: tiene el hijo error, si tenemos un error la aplicacion se debe reiniciar. ejemplos serian out of memory, stackoverflow. la memoria
+en java tiene dos partes, stack y heap. en el stack se guardan las referencias y los objetos en el heap. java elimina todos los elementos del heap que 
+no tengan referencia. los tipos primitivos TAMBIEN se guardan en el stack. el error de stackoverflow es de que tengo demasiadas referencias o tipos 
+primitivos almacenados en el stack
+
+si necesitamos representar un valor int null usamos la clase interger. por que con int el default seria 0 lo que si es un numero
+
+debemos saber el tipo de excepcion que manejamos y elegir la jerarquia
+1-error
+2-runtime
+3-regular
+
+Exception class tiene dos tipos: runtimeexception y otras. si el error es de runtime quiere decir que el problema esta en el codigo y hay que refactorizarlo
+ejemplo array out of bounds. 
+
+entonces, las ERRORS no las podemos manejar por que dependen de cosas como falta de memoria, las runtime exceptions no las manejamos por que son errores de
+codigo. las que debemos manejar son las REGULAR que se extienden de la clase exception. hay dos maneras de procesarlas.
+
+1- throw new exception(); en la signature del metodo hay que agregar la nota throws exception o da error de compilacion. ES UNA MALA PRACTICA THROW EXCEPTION
+DESDE EL METODO MAIN. usamos el try para intentar ejecutar el codigo y catch para definir la exception. el bloque finally se ejecuta SIEMPRE, tengamos o no
+una exception. el finally se usaria para cerrar la conexion a una base de datos por ejemplo, o cerrar un archivo. SI en el catch manejamos la parent
+exception, eso quiere decir que todas las child que manejemos las atrapa por default, si quiero atrapar esa sola exception la tengo que poner especificamente
+en el catch primero, y en el siguiente catch la parent.
+si trabajamos con closable resources es mejor practica cerrar ese resource en el bloque de codigo try y no en el finally.
+
+en el CATCH: no usamos el system print sino la libreria externa log4j. se usa para enviar informacion a streams, esta libreria nos permite mandar la info
+no solo a la consola, la podemos guardar en un archivo tambien, cuando no nos alcanza la consola. el file lo podriamos usar si ejecutamos el codigo en una virtual
+machine, solo para small app. para una app grande tenemos el log management, en test automation NO USAMOS LOG 
+
+tenemos que definir un logger para poder usarlo, cada clase debe tener el sueyo, se define usando el nombre de la clase y el paquete. 
+deben ser private final static logger LOGGER=logger.getlogger(user.class); LOGGER.debug/info("en reemplazo al systemoutprint"), LOGGER.error(e)
+
+metodos del logger: all, debu, info, warn, error, fatal, off y trace. esto es hacia abajo, off y trace estan afuera. pero si elijo all me trate todos
+si elijo degub agarra todo de debu para abajo, y sucesivamente. en produccion estamos interesados en error y fatal. en staging capaz se usa warn y en el 
+ambiente local usariamos debug para guardar todo. 
+
+TAREA CREAR 5 EXCEPCIONES. REEMPLAZAR LOS SYSTEMOUTPRINTLN por loggers
+
+estructura basica del proyecto para el usp de loggers:
+tenemos varios paquetes service, main, etc. para usar un paquete en otro tenemos que importarlo. vamos a tener que refactorizar nuestro proyecto.
+hay una carpeta root, con el mismo nombre que el repositorio, dentro tiene una carpeta src en la que ponemos todo el codigo. dentro de src tenemos main y test
+todo el codigo deberia estar en main. en TEST hacemos clases para probar el codigo de main. dentro de main tenemos resources log4j2.properties, archivos txt,
+scrips para sql, etc, pero NO java code. tambien dentro de main tenemos la carpeta java(sourceroot), dentro de java tenemos la carpeta com/net/etc dentro de com
+el nombre de la empresa (solvd) y dentro de solvd los paquetes que necesita mi proyecto. la carpeta test tiene la misma organizacion que main 
+
+log4j es una libreria externa de java, vamos a tener que descargar desde apache estas librerias, descargamos el binary.zip los archivos log4japi y log4jcore
+.jar son los archivos que necesitamos. elegirmos agreagar librerias y buscamos esos archivos
+
+al refactor el proyecto recordar poner java como sourceroot y resource como resourcesroot
+
+
+
+
+

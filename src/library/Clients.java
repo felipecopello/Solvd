@@ -15,7 +15,7 @@ public class Clients extends People implements IRead, IGreet {
 		this.libraryCard = libraryCard;
 	}
 
-	public boolean isLibraryCard() {
+	public boolean getLibraryCard() {
 		return libraryCard;
 	}
 
@@ -35,13 +35,9 @@ public class Clients extends People implements IRead, IGreet {
 		System.out.println("Hi! can you recommend me a book?");
 	}
 
-	public static void main(String[] args) {
-		String[] booksTaste = { "Crimes", "Romantic novels" };
-		Clients client1 = new Clients("Carlos Sanchez", 22, 3830544, booksTaste, true);
-		boolean card = client1.isLibraryCard();
-		System.out.print(card);
-		client1.read();
-		client1.greet(client1.getName());
+	public void printBookTaste(String[] myArray) {
+		for (int i = 0; i < myArray.length; i++) {
+			System.out.print(myArray[i] + " ");
+		}
 	}
-
 }

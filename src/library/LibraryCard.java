@@ -24,14 +24,7 @@ public class LibraryCard {
 
 	public void setOwner(Object o) {
 		String name = ((Clients) o).getName();
-		name = owner;
+		name = this.owner;
 	}
 
-	public static void main(String[] args) {
-		String[] booksTaste1 = { "Crimes", "Romantic novels" };
-		Clients client1 = new Clients("Carlos Sanchez", 22, 3830544, booksTaste1, true);
-		LibraryCard librarycard1 = new LibraryCard();
-		librarycard1.setOwner(client1);
-		librarycard1.setIssueDate();
-	}
 }

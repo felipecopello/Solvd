@@ -50,7 +50,4 @@ public class Book {
 		this.publishedIn = publishedIn;
 	}
 
-	public static void main(String[] args) {
-		Book book1 = new Book();
-	}
 }

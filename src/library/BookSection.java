@@ -38,9 +38,4 @@ public class BookSection {
 		this.genrasIncluded = genrasIncluded;
 	}
 
-	public static void main(String[] args) {
-		String[] genras = { "Crimes", "Philosophy" };
-		BookSection sector1 = new BookSection(300, 15, genras);
-		System.out.println(sector1.getBookCapacity());
-	}
 }

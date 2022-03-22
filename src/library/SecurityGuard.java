@@ -22,14 +22,4 @@ public class SecurityGuard extends People implements IHelp, IWork, IGreet {
 		System.out.println("Please be quiet in the library");
 	}
 
-	public static void main(String[] args) {
-		SecurityGuard guard1 = new SecurityGuard("Pedro Sanches", 55, 665894);
-		guard1.beQuiet();
-		guard1.helpClient();
-		guard1.work();
-		guard1.greet(guard1.getName());
-
-		IHelp g = new SecurityGuard();
-		g.helpClient();
-	}
 }

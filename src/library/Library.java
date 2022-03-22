@@ -68,16 +68,4 @@ public class Library {
 		System.out.println("Welcome");
 	}
 
-	public static void main(String[] args) {
-		String[] bookSects = { "Science Fiction", "Crimes", "Philosophy" };
-		String[] readingSects = { "Studying area", "Reacreative area", "Informatic area" };
-		String[] books = { "And Then There Were None", "Five Little Pigs", "1984", "Animal Farm",
-				"Beyond Good and Evil", "The Birth of Tragedy" };
-		int computers = 3;
-		int printers = 2;
-		Library myLibrary = new Library("Bs As public library", bookSects, readingSects, books, computers, printers) {
-		};
-
-		myLibrary.welcome();
-	};
 }
