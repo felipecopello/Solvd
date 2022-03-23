@@ -1,4 +1,4 @@
-package library;
+package com.solvd.Iaba;
 
 public class Authors extends People {
 	private String[] writtenBooks;

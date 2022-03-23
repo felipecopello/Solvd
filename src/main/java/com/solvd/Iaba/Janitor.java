@@ -1,4 +1,7 @@
-package library;
+package com.solvd.Iaba;
+
+import com.solvd.util.IHelp;
+import com.solvd.util.IWork;
 
 public class Janitor extends People implements IHelp, IWork {
 	public Janitor() {

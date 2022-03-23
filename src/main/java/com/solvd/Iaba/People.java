@@ -1,4 +1,4 @@
-package library;
+package com.solvd.Iaba;
 
 public abstract class People {
 	private String name;

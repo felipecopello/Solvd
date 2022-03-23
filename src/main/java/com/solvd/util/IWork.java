@@ -1,6 +1,6 @@
-package library;
+package com.solvd.util;
 
-interface IWork {
+public interface IWork {
 	default void work() {
 		System.out.format("%nPerforming a job");
 	}

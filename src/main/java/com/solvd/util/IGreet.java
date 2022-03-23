@@ -1,6 +1,6 @@
-package library;
+package com.solvd.util;
 
-interface IGreet {
+public interface IGreet {
 	default void greet(String name) {
 		System.out.format("%nHello! my name is " + name);
 	}

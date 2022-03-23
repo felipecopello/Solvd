@@ -1,4 +1,8 @@
-package library;
+package com.solvd.Iaba;
+
+import com.solvd.util.IGreet;
+import com.solvd.util.IHelp;
+import com.solvd.util.IWork;
 
 public class SecurityGuard extends People implements IHelp, IWork, IGreet {
 	public SecurityGuard() {

@@ -1,4 +1,7 @@
-package library;
+package com.solvd.Iaba;
+
+import com.solvd.util.IGreet;
+import com.solvd.util.IRead;
 
 public class Clients extends People implements IRead, IGreet {
 	private String[] bookTaste;

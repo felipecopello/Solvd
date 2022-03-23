@@ -1,6 +1,9 @@
-package library;
+package com.solvd.Iaba;
 
 import java.util.Scanner;
+
+import com.solvd.util.GroupedInterface;
+import com.solvd.util.IGreet;
 
 public class Librarian extends People implements GroupedInterface, IGreet {
 	public Librarian() {

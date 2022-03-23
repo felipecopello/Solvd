@@ -1,4 +1,4 @@
-package library;
+package com.solvd.Iaba;
 
 public class BookSection {
 	private int bookCapacity;
