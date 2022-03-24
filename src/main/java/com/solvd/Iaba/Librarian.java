@@ -102,8 +102,8 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 
 	public void recommendBook(Object client) {
 
-		String[] taste = ((Clients) client).getBookTaste();
-		boolean card = ((Clients) client).getLibraryCard();
+		String[] taste = ((Client) client).getBookTaste();
+		boolean card = ((Client) client).getLibraryCard();
 		String crimes = "Crimes";
 		String philosophy = "Philosophy";
 		String scyFy = "Science Fiction";
@@ -128,7 +128,7 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		int age = getClientAge();
 		int id = getClientId();
 		String[] bookTaste = getClientBookTaste();
-		Clients client = new Clients(name, age, id, bookTaste, true);
+		Client client = new Client(name, age, id, bookTaste, true);
 		System.out.println(client.getName());
 		recommendBook(client);
 	}

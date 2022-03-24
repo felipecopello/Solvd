@@ -23,7 +23,7 @@ public class LibraryCard {
 	}
 
 	public void setOwner(Object o) {
-		String name = ((Clients) o).getName();
+		String name = ((Client) o).getName();
 		name = this.owner;
 	}
 

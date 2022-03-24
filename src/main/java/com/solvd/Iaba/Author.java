@@ -1,13 +1,13 @@
 package com.solvd.Iaba;
 
-public class Authors extends People {
+public class Author extends People {
 	private String[] writtenBooks;
 	private String genre;
 
-	public Authors() {
+	public Author() {
 	};
 
-	public Authors(String name, int age, int id, String[] writtenBooks, String genre) {
+	public Author(String name, int age, int id, String[] writtenBooks, String genre) {
 		super(name, age, id);
 		setWrittenBooks(writtenBooks);
 		setGenre(genre);

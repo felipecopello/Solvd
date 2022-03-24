@@ -3,14 +3,14 @@ package com.solvd.Iaba;
 import com.solvd.util.IGreet;
 import com.solvd.util.IRead;
 
-public class Clients extends People implements IRead, IGreet {
+public class Client extends People implements IRead, IGreet {
 	private String[] bookTaste;
 	private boolean libraryCard;
 
-	public Clients() {
+	public Client() {
 	}
 
-	public Clients(String name, int age, int id, String[] bookTaste, boolean libraryCard) {
+	public Client(String name, int age, int id, String[] bookTaste, boolean libraryCard) {
 		setName(name);
 		setAge(age);
 		setId(id);
