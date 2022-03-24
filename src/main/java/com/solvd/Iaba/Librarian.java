@@ -2,6 +2,7 @@ package com.solvd.Iaba;
 
 import java.util.Scanner;
 
+import com.solvd.exceptions.NameNotCharException;
 import com.solvd.util.GroupedInterface;
 import com.solvd.util.IGreet;
 
@@ -27,7 +28,33 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		Scanner sc = new Scanner(System.in);
 		System.out.format("%nEnter your name: ");
 		String clientName = sc.nextLine();
+
+		try {
+			char[] ch = new char[clientName.length()];
+			ch = clientName.toCharArray();
+			clientName = validateName(ch);
+			return clientName;
+		}
+
+		catch (NameNotCharException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return clientName;
+
+	}
+
+	public String validateName(char[] ch) throws NameNotCharException {
+		String validatedName = new String();
+		for (int i = 0; i < ch.length; i++) {
+			if (Character.isLetter(ch[i])) {
+				char a = ch[i];
+				validatedName = validatedName + a;
+			} else {
+				System.out.println(ch[i] + " is not a letter");
+				throw new NameNotCharException("There can only be letters in Name field");
+			}
+		}
+		return validatedName;
 	}
 
 	public int getClientAge() {
@@ -96,26 +123,18 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		}
 	};
 
-	public void recieveNewClient() {
+	public void recieveNewClient() throws NameNotCharException {
 		String name = getClientName();
 		int age = getClientAge();
 		int id = getClientId();
 		String[] bookTaste = getClientBookTaste();
 		Clients client = new Clients(name, age, id, bookTaste, true);
+		System.out.println(client.getName());
 		recommendBook(client);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NameNotCharException {
 		Librarian librarian1 = new Librarian();
-
-		Clients client1 = new Clients();
-		client1.setName(librarian1.getClientName());
-		client1.setAge(librarian1.getClientAge());
-		client1.setId(librarian1.getClientId());
-		client1.setBookTaste(librarian1.getClientBookTaste());
-		client1.setLibraryCard(librarian1.getClientLibraryCard());
-		System.out.println(client1.getName() + client1.getAge() + client1.getId() + client1.getBookTaste()
-				+ client1.getLibraryCard());
-		librarian1.recommendBook(client1);
+		librarian1.getClientName();
 	};
 }
