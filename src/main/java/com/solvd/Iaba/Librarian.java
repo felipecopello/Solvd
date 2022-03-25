@@ -2,11 +2,18 @@ package com.solvd.Iaba;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.solvd.exceptions.IdTooLongException;
 import com.solvd.exceptions.NameNotCharException;
+import com.solvd.loggerExample.Main;
 import com.solvd.util.GroupedInterface;
 import com.solvd.util.IGreet;
 
 public class Librarian extends People implements GroupedInterface, IGreet {
+	private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
 	public Librarian() {
 	}
 
@@ -50,7 +57,7 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 				char a = ch[i];
 				validatedName = validatedName + a;
 			} else {
-				System.out.println(ch[i] + " is not a letter");
+				LOGGER.error(ch[i] + " is not a letter");
 				throw new NameNotCharException("There can only be letters in Name field");
 			}
 		}
@@ -60,15 +67,33 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 	public int getClientAge() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter your age: ");
-		int clientAge = sc.nextInt();
-		return clientAge;
+		try {
+			int clientAge = sc.nextInt();
+			return clientAge;
+		} catch (RuntimeException ex) {
+			throw new RuntimeException("There can only be ints in Age field");
+		}
 	}
 
 	public int getClientId() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter your Id: ");
-		int clientId = sc.nextInt();
-		return clientId;
+		try {
+			String validId = validateId(sc.nextLine());
+			int clientId = Integer.parseInt(validId);
+			return clientId;
+		} catch (NumberFormatException ex) {
+			throw new NumberFormatException("There shoud only be ints in Id field");
+		}
+	}
+
+	public String validateId(String id) throws IdTooLongException {
+		if (id.length() == 8) {
+			LOGGER.info(id + " is a valid Id");
+			return id;
+		} else {
+			throw new IdTooLongException("The Id should be 8 numbers");
+		}
 	}
 
 	public String[] getClientBookTaste() {
@@ -88,6 +113,15 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		return clientBookTaste;
 	}
 
+	// public String[] validateBookTaste(String[] taste) {
+	// String[] availableGenres = { "Crimes", "Science Fiction", "Philosophy" };
+	// for (int i = 0; i < taste.length; i++) {
+	// for (int j = 0; i < availableGenres.length; j++) {
+	// to be developed
+	// }
+	// }
+	// }
+
 	public boolean getClientLibraryCard() {
 		String y = "yes";
 		Scanner sc = new Scanner(System.in);
@@ -98,6 +132,7 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		} else {
 		}
 		return true;
+
 	}
 
 	public void recommendBook(Object client) {
@@ -123,18 +158,18 @@ public class Librarian extends People implements GroupedInterface, IGreet {
 		}
 	};
 
-	public void recieveNewClient() throws NameNotCharException {
+	public void recieveNewClient() {
 		String name = getClientName();
 		int age = getClientAge();
 		int id = getClientId();
 		String[] bookTaste = getClientBookTaste();
-		Client client = new Client(name, age, id, bookTaste, true);
-		System.out.println(client.getName());
+		boolean card = getClientLibraryCard();
+		Client client = new Client(name, age, id, bookTaste, card);
 		recommendBook(client);
 	}
 
-	public static void main(String[] args) throws NameNotCharException {
+	public static void main(String[] args) {
 		Librarian librarian1 = new Librarian();
-		librarian1.getClientName();
+		librarian1.getClientId();
 	};
 }

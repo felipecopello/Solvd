@@ -1,12 +1,12 @@
 package com.solvd.exceptions;
 
-public class NameNotCharException extends RuntimeException {
+public class IdTooLongException extends RuntimeException {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public NameNotCharException(String message) {
+	public IdTooLongException(String message) {
 		super(message);
 	}
 }

@@ -7,9 +7,10 @@ public class Main {
 	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
 	public static void main(String[] args) {
+		// System.out.println(LOGGER.atInfo());
 		LOGGER.debug("Hello debug");
 		LOGGER.info("Hello info");
-		LOGGER.warn("Hello warn");
+		// LOGGER.warn("Hello warn");
 		LOGGER.error("Hello error");
 	}
 }
