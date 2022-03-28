@@ -2,6 +2,7 @@ package com.solvd.Iaba;
 
 import java.util.HashSet;
 
+import com.solvd.util.CustomLinkedList;
 import com.solvd.util.IGreet;
 import com.solvd.util.IHelp;
 import com.solvd.util.IWork;
@@ -39,5 +40,11 @@ public class SecurityGuard extends People implements IHelp, IWork, IGreet {
 
 	public boolean isClient(HashSet<String> clients, String client) {
 		return clients.contains(client);
+	}
+
+	public void listFurniture() {
+		String[] furniture = { "Tables", "Chairs", "Book shelves", "Desks" };
+		CustomLinkedList<String> uList = new CustomLinkedList<String>(furniture);
+		uList.show();
 	}
 }
