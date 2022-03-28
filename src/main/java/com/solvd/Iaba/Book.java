@@ -1,6 +1,7 @@
 package com.solvd.Iaba;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Book {
 	private String author;
@@ -50,4 +51,17 @@ public class Book {
 		this.publishedIn = publishedIn;
 	}
 
+	public static void listBooks() {
+		Book book1 = new Book("John Katzenbach", "El psicoanalista", "Planeta");
+		Book book2 = new Book("Joe Hill", "Fantasmas", "Suma");
+		Book book3 = new Book("Jorge Fernandez", "El puñal", "ABC");
+		ArrayList<Object> books = new ArrayList<>();
+		books.add(book1);
+		books.add(book2);
+		books.add(book3);
+
+		for (int i = 0; i < books.size(); i++) {
+			System.out.println(((Book) books.get(i)).getTitle());
+		}
+	}
 }

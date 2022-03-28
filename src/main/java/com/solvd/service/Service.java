@@ -1,12 +1,13 @@
 package com.solvd.service;
 
-import com.solvd.Iaba.Librarian;
+import com.solvd.Iaba.ClientQueue;
 
-public class Service {
+public abstract class Service extends ClientQueue<Object> {
 	public static void main(String[] args) {
 
-		Librarian librarian1 = new Librarian();
-		librarian1.recieveNewClient();
+		// Librarian librarian1 = new Librarian();
+		// librarian1.recieveNewClient();
+		recieveClientQueue(2);
 
 	}
 }

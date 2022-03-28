@@ -2,17 +2,12 @@ package com.solvd.Iaba;
 
 import java.util.Scanner;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.solvd.exceptions.NameNotCharException;
-import com.solvd.loggerExample.Main;
 import com.solvd.util.GroupedInterface;
 import com.solvd.util.IGreet;
 import com.solvd.util.IValidate;
 
 public class Librarian extends People implements GroupedInterface, IGreet, IValidate {
-	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
 	public Librarian() {
 	}

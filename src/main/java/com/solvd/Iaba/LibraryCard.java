@@ -14,8 +14,8 @@ public class LibraryCard {
 	}
 
 	public void setIssueDate() {
-		LocalDate myObj = LocalDate.now();
-		myObj = this.issueDate;
+		this.issueDate = LocalDate.now();
+
 	}
 
 	public Object getOwner() {
@@ -23,8 +23,7 @@ public class LibraryCard {
 	}
 
 	public void setOwner(Object o) {
-		String name = ((Client) o).getName();
-		name = this.owner;
+		this.owner = ((Client) o).getName();
 	}
 
 }
