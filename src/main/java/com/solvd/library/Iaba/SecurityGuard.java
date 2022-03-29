@@ -2,7 +2,6 @@ package com.solvd.library.Iaba;
 
 import java.util.HashSet;
 
-import com.solvd.library.util.CustomLinkedList;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
@@ -42,9 +41,9 @@ public class SecurityGuard extends People implements IHelp, IWork, IGreet {
 		return clients.contains(client);
 	}
 
-	public void listFurniture() {
-		String[] furniture = { "Tables", "Chairs", "Book shelves", "Desks" };
-		CustomLinkedList<String> uList = new CustomLinkedList<String>(furniture);
-		uList.show();
-	}
+	// public void listFurniture() {
+	// String[] furniture = { "Tables", "Chairs", "Book shelves", "Desks" };
+	// CustomLinkedList<String> uList = new CustomLinkedList<String>(furniture);
+	// uList.show();
+	// }
 }

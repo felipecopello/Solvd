@@ -23,6 +23,7 @@ com\solvd\library\exceptions\NoStockException.class
 com\solvd\library\Iaba\Book.class
 com\solvd\library\exceptions\NoLibraryCardException.class
 com\solvd\library\Iaba\Printer.class
+com\solvd\library\util\Node.class
 com\solvd\library\service\Service.class
 com\solvd\library\util\IWork.class
 com\solvd\library\exceptions\AgeNotIntException.class
