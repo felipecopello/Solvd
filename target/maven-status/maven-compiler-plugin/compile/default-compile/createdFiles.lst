@@ -7,7 +7,6 @@ com\solvd\library\Iaba\BookSection.class
 com\solvd\library\util\CustomLinkedList.class
 com\solvd\library\Iaba\LibraryCard.class
 com\solvd\library\Iaba\Author.class
-com\solvd\library\Iaba\People.class
 com\solvd\library\util\GroupedInterface.class
 com\solvd\library\Iaba\SecurityGuard.class
 com\solvd\library\util\IRead.class
@@ -20,7 +19,9 @@ com\solvd\library\Iaba\BookList.class
 com\solvd\library\Iaba\Client.class
 com\solvd\library\Iaba\Librarian.class
 com\solvd\library\exceptions\NoStockException.class
+com\solvd\library\Iaba\Person.class
 com\solvd\library\Iaba\Book.class
+com\solvd\library\logger\App.class
 com\solvd\library\exceptions\NoLibraryCardException.class
 com\solvd\library\Iaba\Printer.class
 com\solvd\library\util\Node.class

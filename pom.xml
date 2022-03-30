@@ -86,6 +86,34 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+		<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-dependency-plugin</artifactId>
+		        <version>3.3.0</version>
+		        <configuration>
+		          <artifactItems>
+		            <artifactItem>
+		              <groupId>[ groupId ]</groupId>
+		              <artifactId>[ artifactId ]</artifactId>
+		              <version>[ version ]</version>
+		              <type>[ packaging ]</type>
+		              <classifier> [classifier - optional] </classifier>
+		              <overWrite>[ true or false ]</overWrite>
+		              <outputDirectory>[ output directory ]</outputDirectory>
+		              <destFileName>[ filename ]</destFileName>
+		            </artifactItem>
+		          </artifactItems>
+		          <!-- other configurations here -->
+		        </configuration>
+		    </plugin>
+		<plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+            <configuration>
+                <mainClass>com.solvd.library.service.Service</mainClass>
+            </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

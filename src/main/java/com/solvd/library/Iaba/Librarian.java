@@ -2,16 +2,21 @@ package com.solvd.library.Iaba;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
+import com.solvd.library.logger.App;
 import com.solvd.library.util.GroupedInterface;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IValidate;
 
-public class Librarian extends People implements GroupedInterface, IGreet, IValidate {
+public class Librarian extends Person implements GroupedInterface, IGreet, IValidate {
+	private static final Logger LOGGER = LogManager.getLogger(App.class);
 	private Scanner sc = new Scanner(System.in);
 
 	public Librarian() {
@@ -23,16 +28,16 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 
 	@Override
 	public void helpClient() {
-		System.out.format("%nThe book you are looking for is over there");
+		LOGGER.info("%nThe book you are looking for is over there");
 	}
 
 	@Override
 	public void work() {
-		System.out.format("%nOrganizing books");
+		LOGGER.info("%nOrganizing books");
 	}
 
 	public String getClientName() {
-		System.out.format("%nEnter your name: ");
+		LOGGER.info("%nEnter your name: ");
 		String clientName = "";
 		try {
 			clientName = sc.nextLine();
@@ -41,13 +46,13 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 			clientName = IValidate.validateName(ch);
 			return clientName;
 		} catch (NameNotCharException ex) {
-			System.out.println(ex.getMessage());
+			LOGGER.error(ex.getMessage());
 		}
 		return clientName;
 	}
 
 	public int getClientAge() throws AgeNotIntException {
-		System.out.print("Enter your age: ");
+		LOGGER.info("Enter your age: ");
 		try {
 			String age = sc.nextLine();
 			char[] ch = new char[age.length()];
@@ -60,7 +65,7 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 	}
 
 	public int getClientId() throws IdTooLongException {
-		System.out.print("Enter your Id: ");
+		LOGGER.info("Enter your Id: ");
 		try {
 			String validId = IValidate.validateId(sc.nextLine());
 			int clientId = Integer.parseInt(validId);
@@ -71,16 +76,16 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 	}
 
 	public String[] getClientBookTaste() throws NoStockException {
-		System.out.println("¿How many book genres do you like?");
+		LOGGER.info("¿How many book genres do you like?");
 		try {
 			int length = sc.nextInt();
 			String[] clientBookTaste = new String[length];
-			System.out.println("¿What genres of books do you like?");
+			LOGGER.info("¿What genres of books do you like?");
 			for (int i = 0; i < length; i++) {
 				String userInput = sc.next();
 				clientBookTaste[i] = userInput;
 			}
-			System.out.println("I like those books too");
+			LOGGER.info("I like those books too");
 			IValidate.validateBookTaste(clientBookTaste);
 			return clientBookTaste;
 		} catch (NoStockException ex) {
@@ -89,7 +94,7 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 	}
 
 	public boolean getClientLibraryCard() {
-		System.out.println("¿Do you have a library card? enter yes or no");
+		LOGGER.info("¿Do you have a library card? enter yes or no");
 		try (Scanner sc = new Scanner(System.in)) {
 			return IValidate.validateLibraryCard(sc.nextLine());
 		} catch (NoLibraryCardException ex) {
@@ -115,7 +120,7 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 				}
 			}
 		} else {
-			System.out.format("%nSorry you do not have a valid Library Card");
+			LOGGER.error("%nSorry you do not have a valid Library Card");
 		}
 	};
 

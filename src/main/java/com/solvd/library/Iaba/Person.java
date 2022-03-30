@@ -1,14 +1,14 @@
 package com.solvd.library.Iaba;
 
-public abstract class People {
+public abstract class Person {
 	private String name;
 	private int age;
 	private int id;
 
-	public People() {
+	public Person() {
 	};
 
-	public People(String name, int age, int id) {
+	public Person(String name, int age, int id) {
 		setName(name);
 		setAge(age);
 		setId(id);

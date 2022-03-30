@@ -6,7 +6,7 @@ import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
-public class SecurityGuard extends People implements IHelp, IWork, IGreet {
+public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 	public SecurityGuard() {
 	}
 

@@ -3,7 +3,7 @@ package com.solvd.library.Iaba;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Author extends People {
+public class Author extends Person {
 	private Map<String, String> writtenBooks = new HashMap<>();
 	private String genre;
 

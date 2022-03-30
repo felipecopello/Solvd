@@ -3,7 +3,7 @@ package com.solvd.library.Iaba;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
-public class Janitor extends People implements IHelp, IWork {
+public class Janitor extends Person implements IHelp, IWork {
 	public Janitor() {
 	};
 

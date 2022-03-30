@@ -1,12 +1,17 @@
 package com.solvd.library.util;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
+import com.solvd.library.logger.App;
 
 public interface IValidate {
+	static final Logger LOGGER = LogManager.getLogger(App.class);
 
 	public static String validateName(char[] ch) throws NameNotCharException {
 		String validatedName = new String();
@@ -15,7 +20,7 @@ public interface IValidate {
 				char a = ch[i];
 				validatedName = validatedName + a;
 			} else {
-				System.out.println(ch[i] + " is not a letter");
+				LOGGER.error(ch[i] + " is not a letter");
 				throw new NameNotCharException("There can only be letters in Name field");
 			}
 		}
@@ -38,7 +43,7 @@ public interface IValidate {
 
 	public static String validateId(String id) throws IdTooLongException {
 		if (id.length() == 8) {
-			System.out.println(id + " is a valid Id");
+			LOGGER.info(id + " is a valid Id");
 			return id;
 		} else {
 			throw new IdTooLongException("The Id should be 8 numbers");
@@ -52,7 +57,7 @@ public interface IValidate {
 			for (int j = 0; j < availableGenres.length; j++) {
 				if (taste[i].equalsIgnoreCase(availableGenres[j])) {
 					genreAvailable = true;
-					System.out.println("We actually have " + taste[i] + " available");
+					LOGGER.info("We actually have " + taste[i] + " available");
 				}
 			}
 		}

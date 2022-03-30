@@ -3,7 +3,7 @@ package com.solvd.library.Iaba;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IRead;
 
-public class Client extends People implements IRead, IGreet {
+public class Client extends Person implements IRead, IGreet {
 	private String[] bookTaste;
 	private boolean libraryCard;
 
