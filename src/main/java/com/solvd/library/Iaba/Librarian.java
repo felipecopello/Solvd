@@ -12,6 +12,7 @@ import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IValidate;
 
 public class Librarian extends People implements GroupedInterface, IGreet, IValidate {
+	private Scanner sc = new Scanner(System.in);
 
 	public Librarian() {
 	}
@@ -33,7 +34,6 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 	public String getClientName() {
 		System.out.format("%nEnter your name: ");
 		String clientName = "";
-		Scanner sc = new Scanner(System.in);
 		try {
 			clientName = sc.nextLine();
 			char[] ch = new char[clientName.length()];
@@ -48,14 +48,12 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 
 	public int getClientAge() throws AgeNotIntException {
 		System.out.print("Enter your age: ");
-		Scanner sc = new Scanner(System.in);
 		try {
 			String age = sc.nextLine();
 			char[] ch = new char[age.length()];
 			ch = age.toCharArray();
 			int validatedAge = IValidate.validateAge(ch);
 			return validatedAge;
-
 		} catch (AgeNotIntException ex) {
 			throw new AgeNotIntException(ex.getMessage());
 		}
@@ -63,7 +61,6 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 
 	public int getClientId() throws IdTooLongException {
 		System.out.print("Enter your Id: ");
-		Scanner sc = new Scanner(System.in);
 		try {
 			String validId = IValidate.validateId(sc.nextLine());
 			int clientId = Integer.parseInt(validId);
@@ -75,7 +72,6 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 
 	public String[] getClientBookTaste() throws NoStockException {
 		System.out.println("¿How many book genres do you like?");
-		Scanner sc = new Scanner(System.in);
 		try {
 			int length = sc.nextInt();
 			String[] clientBookTaste = new String[length];
@@ -134,5 +130,7 @@ public class Librarian extends People implements GroupedInterface, IGreet, IVali
 	}
 
 	public static void main(String[] args) throws IdTooLongException, AgeNotIntException {
+		Librarian librarian1 = new Librarian();
+		librarian1.getClientAge();
 	};
 }
