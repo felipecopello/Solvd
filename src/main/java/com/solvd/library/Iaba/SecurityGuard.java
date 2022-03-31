@@ -7,11 +7,21 @@ import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
 public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
+	private HashSet<String> clients = new HashSet<>();
+
 	public SecurityGuard() {
 	}
 
 	public SecurityGuard(String name, int age, int id) {
 		super(name, age, id);
+	}
+
+	public HashSet<String> getClients() {
+		return clients;
+	}
+
+	public void setClients(HashSet<String> clients) {
+		this.clients = clients;
 	}
 
 	@Override
@@ -28,22 +38,7 @@ public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 		System.out.println("Please be quiet in the library");
 	}
 
-	public HashSet<String> listClientsNames() {
-		HashSet<String> clients = new HashSet<>();
-		clients.add("Pedro Sanchez");
-		clients.add("Esteban Gonzalez");
-		clients.add("Juan Benitez");
-		clients.add("Mariano Martinez");
-		return clients;
-	}
-
 	public boolean isClient(HashSet<String> clients, String client) {
 		return clients.contains(client);
 	}
-
-	// public void listFurniture() {
-	// String[] furniture = { "Tables", "Chairs", "Book shelves", "Desks" };
-	// CustomLinkedList<String> uList = new CustomLinkedList<String>(furniture);
-	// uList.show();
-	// }
 }
