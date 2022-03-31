@@ -10,13 +10,12 @@ import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
-import com.solvd.library.logger.App;
 import com.solvd.library.util.GroupedInterface;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IValidate;
 
 public class Librarian extends Person implements GroupedInterface, IGreet, IValidate {
-	private static final Logger LOGGER = LogManager.getLogger(App.class);
+	private static final Logger LOGGER = LogManager.getLogger(Librarian.class);
 	private Scanner sc = new Scanner(System.in);
 
 	public Librarian() {

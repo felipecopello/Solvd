@@ -8,10 +8,9 @@ import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
-import com.solvd.library.logger.App;
 
 public interface IValidate {
-	static final Logger LOGGER = LogManager.getLogger(App.class);
+	static final Logger LOGGER = LogManager.getLogger(IValidate.class);
 
 	public static String validateName(char[] ch) throws NameNotCharException {
 		String validatedName = new String();
