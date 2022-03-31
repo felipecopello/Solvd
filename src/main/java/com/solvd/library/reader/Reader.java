@@ -21,8 +21,7 @@ public class Reader {
 
 		for (int i = 0; i < fileAsStrArray.length; i++) {
 			int n = StringUtils.countMatches(fileAsString, fileAsStrArray[i]);
-			String str = fileAsStrArray[i] + "__" + n;
-			arrayOutput.add(str);
+			arrayOutput.add(fileAsStrArray[i] + "__" + n);
 		}
 		FileUtils.writeLines(outputFile, arrayOutput);
 	}
