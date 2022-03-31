@@ -135,7 +135,5 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 	}
 
 	public static void main(String[] args) throws IdTooLongException, AgeNotIntException {
-		Librarian librarian1 = new Librarian();
-		librarian1.getClientAge();
 	};
 }
