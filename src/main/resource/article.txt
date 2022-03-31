@@ -1,0 +1,35 @@
+Why is Java popular?
+The aspect which makes Java one of the most appealing languages is that it, at its core, Java is an object-oriented programming (OOP) language. OOP offers a neat modular structure, thereby making it easier to solve complex problems. Its modular nature helps programmers to write reusable code and also enhances the development process. 
+
+In Java programming, classes that define the data attributes and behaviors (defined by methods coded in the class) are used to create objects. Furthermore, Java includes features like abstraction, encapsulation, polymorphism, and inheritance, along with best practices and built-in packages, simplifying the writing of Java code. Since Java  Java objects don’t need any external references, Java code is exceptionally robust. 
+
+Now, let’s look at some of the best features of Java that make it so popular!
+
+1. Java is user-friendly
+Java has an English-like syntax, which makes it the perfect language for beginners who can learn Java in two phases – begin with Core Java and then progress to Advanced Java. So, Java has a simple learning curve. And if you possess the foundational knowledge of C and C++, it won’t take long for you to master Java.
+
+
+2. Java for everything!
+For long, Java has been the staple programming language for developing Web apps, Android apps, and software tools like Eclipse, IntelliJ IDEA, NetBeans IDE, etc. Today, Java’s use cases have expanded to Data Science applications, Machine Learning applications, and even IoT. Developers and programmers prefer Java for designing all such applications because Java has a suite of high-level concurrency tools and packages that make it possible to create highly scalable solutions. Also, Java is multi-platform compatible.
+
+3. Java boasts of rich API
+Although Java contains around fifty keywords, its Application Programming Interface (API) is both extensive and rich – it is replete with numerous methods that you can directly use in any code. Java API comprises methods that can cater to every purpose, including networking, connecting to databases, parsing XML, handling input-output, and so on. Furthermore, Java has plenty of open-source libraries such as Google Guava, Apache Xerxes, Apache POI, Apache Commons, OpenCV, Gson, ETC.
+
+Must Read: Java Interview Question & Answers.
+
+4. A robust community backs Java
+One of the biggest reasons for Java’s popularity is its strong and active community support. It boasts of being the second-largest among the Stack Overflow community. So, rest assured, you can rely on the Java community to help you out if you ever get stuck in a programming rut.
+
+
+5. Java has excellent documentation
+Java is an open-source programming language, which means it is absolutely free. Another excellent quality of the language is that Java is well-documented. It has a detailed guide that will clarify the problems that you may face while coding in Java. 
+
+6. Java has a suite of powerful development tools
+One of Java’s most interesting aspects is its Integrated Development Environment (IDE). Java’s IDE is an extensive suite of various automation tools, editors, and debuggers. NetBeans, Eclipse, and IntelliJ IDEA are the three most popular Java IDEs. As for tools, Java has Maven and ANT for developing Java applications, Jenkins for Continuous Integration and delivery, and JConsole and Visual VM for monitoring Heap usage. 
+
+Learn Software Development online from the World’s top Universities. Earn Executive PG Programs, Advanced Certificate Programs or Masters Programs to fast-track your career.
+
+Conclusion
+These are some of the most crucial reasons why Java is popular among developers, data science professionals, and industry giants. The Java Runtime Environment (JRE) is compatible with almost all devices and platforms, from Macintosh, Linux/Unix, Windows, to other mainframe systems and even mobile devices. No wonder why Java is an omnipresent force in the industry right now!
+
+If you’re interested to learn more about full stack software development , check out upGrad & IIIT-B’s Executive PG Program in Full-stack Software Development which is designed for working professionals and offers 500+ hours of rigorous training, 9+ projects and assignments, IIIT-B Alumni status, practical hands-on capstone projects & job assistance with top firms.

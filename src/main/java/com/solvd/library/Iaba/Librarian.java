@@ -75,11 +75,11 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 	}
 
 	public String[] getClientBookTaste() throws NoStockException {
-		LOGGER.info("¿How many book genres do you like?");
+		LOGGER.info("How many book genres do you like?");
 		try {
 			int length = sc.nextInt();
 			String[] clientBookTaste = new String[length];
-			LOGGER.info("¿What genres of books do you like?");
+			LOGGER.info("What genres of books do you like?");
 			for (int i = 0; i < length; i++) {
 				String userInput = sc.next();
 				clientBookTaste[i] = userInput;
@@ -93,7 +93,7 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 	}
 
 	public boolean getClientLibraryCard() {
-		LOGGER.info("¿Do you have a library card? enter yes or no");
+		LOGGER.info("Do you have a library card? enter yes or no");
 		try (Scanner sc = new Scanner(System.in)) {
 			return IValidate.validateLibraryCard(sc.nextLine());
 		} catch (NoLibraryCardException ex) {
