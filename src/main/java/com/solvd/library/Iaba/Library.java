@@ -1,13 +1,20 @@
 package com.solvd.library.Iaba;
 
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.solvd.library.util.CustomLinkedList;
+
 public class Library {
 	private String name;
-
-	private String[] bookSections;
-	private String[] readingSections;
-	private String[] bookList;
+	private ArrayList<String> bookSections = new ArrayList<>();
+	private ArrayList<String> readingSections = new ArrayList<>();
+	private static CustomLinkedList<Book> bookList = new CustomLinkedList<Book>();
 	private int computers;
 	private int printers;
+	private static final Logger LOGGER = LogManager.getLogger(Library.class);
 
 	public Library() {
 	};
@@ -20,32 +27,24 @@ public class Library {
 		this.name = name;
 	}
 
-	public Library(String name, String[] bookSections, String[] readingSections, String[] bookList, int computers,
-			int printers) {
+	public Library(String name, String[] bookSections, String[] readingSections, CustomLinkedList<Book> booklist,
+			int computers, int printers) {
 	};
 
-	public String[] getBookSections() {
+	public ArrayList<String> getBookSections() {
 		return bookSections;
 	}
 
-	public void setBookSections(String[] bookSections) {
+	public void setBookSections(ArrayList<String> bookSections) {
 		this.bookSections = bookSections;
 	}
 
-	public String[] getReadingSections() {
+	public ArrayList<String> getReadingSections() {
 		return readingSections;
 	}
 
-	public void setReadingSections(String[] readingSections) {
+	public void setReadingSections(ArrayList<String> readingSections) {
 		this.readingSections = readingSections;
-	}
-
-	public String[] getBookList() {
-		return bookList;
-	}
-
-	public void setBookList(String[] bookList) {
-		this.bookList = bookList;
 	}
 
 	public int getComputers() {
@@ -65,7 +64,15 @@ public class Library {
 	}
 
 	public void welcome() {
-		System.out.println("Welcome");
+		LOGGER.info("Welcome");
+	}
+
+	public CustomLinkedList<Book> getBooklist() {
+		return bookList;
+	}
+
+	public void setBooklist(CustomLinkedList<Book> booklist) {
+		Library.bookList = booklist;
 	}
 
 }

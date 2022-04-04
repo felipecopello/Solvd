@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class LibraryCard {
 	private String owner;
 	private LocalDate issueDate;
+	private boolean owned;
 
 	public LibraryCard() {
 	}
@@ -24,6 +25,14 @@ public class LibraryCard {
 
 	public void setOwner(Object o) {
 		this.owner = ((Client) o).getName();
+	}
+
+	public boolean isOwned() {
+		return owned;
+	}
+
+	public void setOwned(boolean owned) {
+		this.owned = owned;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.solvd.library.Iaba;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +18,9 @@ import com.solvd.library.util.IValidate;
 public class Librarian extends Person implements GroupedInterface, IGreet, IValidate {
 	private static final Logger LOGGER = LogManager.getLogger(Librarian.class);
 	private Scanner sc = new Scanner(System.in);
+	private String crimes = "Crimes";
+	private String philosophy = "Philosophy";
+	private String scyFy = "Science Fiction";
 
 	public Librarian() {
 	}
@@ -74,15 +78,15 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 		}
 	}
 
-	public String[] getClientBookTaste() throws NoStockException {
+	public ArrayList<String> getClientBookTaste() throws NoStockException {
 		LOGGER.info("How many book genres do you like?");
 		try {
 			int length = sc.nextInt();
-			String[] clientBookTaste = new String[length];
+			ArrayList<String> clientBookTaste = new ArrayList<>();
 			LOGGER.info("What genres of books do you like?");
 			for (int i = 0; i < length; i++) {
 				String userInput = sc.next();
-				clientBookTaste[i] = userInput;
+				clientBookTaste.add(userInput);
 			}
 			LOGGER.info("I like those books too");
 			IValidate.validateBookTaste(clientBookTaste);
@@ -102,20 +106,17 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 	}
 
 	public void recommendBook(Object client) {
-		String[] taste = ((Client) client).getBookTaste();
+		ArrayList<String> taste = ((Client) client).getBookTaste();
 		boolean card = ((Client) client).getLibraryCard();
-		String crimes = "Crimes";
-		String philosophy = "Philosophy";
-		String scyFy = "Science Fiction";
 
 		if (card == true) {
 			for (String x : taste) {
 				if (x.equalsIgnoreCase(crimes)) {
-					System.out.format("%nIf you like " + crimes + " you should read Agatha Christie");
+					LOGGER.info("%nIf you like " + crimes + " you should read Agatha Christie");
 				} else if (x.equalsIgnoreCase(philosophy)) {
-					System.out.format("%nIf you like " + philosophy + " you should read Friederich Nietzche");
+					LOGGER.info("%nIf you like " + philosophy + " you should read Friederich Nietzche");
 				} else if (x.equalsIgnoreCase(scyFy)) {
-					System.out.format("%nYou should read George Orwell");
+					LOGGER.info("%nYou should read George Orwell");
 				}
 			}
 		} else {
@@ -127,10 +128,19 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 		String name = getClientName();
 		int age = getClientAge();
 		int id = getClientId();
-		String[] bookTaste = getClientBookTaste();
+		ArrayList<String> bookTaste = getClientBookTaste();
 		boolean card = getClientLibraryCard();
 		Client client = new Client(name, age, id, bookTaste, card);
 		recommendBook(client);
+	}
+
+	public void showBookList(Library o) {
+		LOGGER.info("Currently we have in the library");
+		int f = o.getBooklist().size();
+		for (int i = 0; i < f; i++) {
+			String book = o.getBooklist().get(i).getData().getTitle();
+			LOGGER.info(book);
+		}
 	}
 
 	public static void main(String[] args) throws IdTooLongException, AgeNotIntException {

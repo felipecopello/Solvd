@@ -3,7 +3,7 @@ package com.solvd.library.Iaba;
 import java.time.LocalDate;
 
 public class Book {
-	private String author;
+	private Author author;
 	private String title;
 	private String editorial;
 	private LocalDate publishedIn;
@@ -11,18 +11,18 @@ public class Book {
 	Book() {
 	};
 
-	Book(String author, String title, String editorial) {
+	public Book(Author author, String title, String editorial) {
 		setAuthor(author);
 		setTitle(title);
 		setEditorial(editorial);
 		setPublishedIn(LocalDate.now());
 	}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 

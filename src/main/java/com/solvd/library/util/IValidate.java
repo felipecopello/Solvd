@@ -1,5 +1,7 @@
 package com.solvd.library.util;
 
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -49,14 +51,14 @@ public interface IValidate {
 		}
 	}
 
-	public static boolean validateBookTaste(String[] taste) throws NoStockException {
+	public static boolean validateBookTaste(ArrayList<String> taste) throws NoStockException {
 		String[] availableGenres = { "Crimes", "Science Fiction", "Philosophy" };
 		boolean genreAvailable = false;
-		for (int i = 0; i < taste.length; i++) {
+		for (int i = 0; i < taste.size(); i++) {
 			for (int j = 0; j < availableGenres.length; j++) {
-				if (taste[i].equalsIgnoreCase(availableGenres[j])) {
+				if (taste.get(i).equalsIgnoreCase(availableGenres[j])) {
 					genreAvailable = true;
-					LOGGER.info("We actually have " + taste[i] + " available");
+					LOGGER.info("We actually have " + taste.get(i) + " available");
 				}
 			}
 		}

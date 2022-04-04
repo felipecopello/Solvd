@@ -2,12 +2,16 @@ package com.solvd.library.Iaba;
 
 import java.util.HashSet;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
 public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 	private HashSet<String> clients = new HashSet<>();
+	private static final Logger LOGGER = LogManager.getLogger(SecurityGuard.class);
 
 	public SecurityGuard() {
 	}
@@ -26,16 +30,16 @@ public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 
 	@Override
 	public void helpClient() {
-		System.out.format("%nThe section you are looking for is that way");
+		LOGGER.info("%nThe section you are looking for is that way");
 	}
 
 	@Override
 	public void work() {
-		System.out.format("%nWatching the library");
+		LOGGER.info("%nWatching the library");
 	}
 
 	public void beQuiet() {
-		System.out.println("Please be quiet in the library");
+		LOGGER.info("Please be quiet in the library");
 	}
 
 	public boolean isClient(HashSet<String> clients, String client) {

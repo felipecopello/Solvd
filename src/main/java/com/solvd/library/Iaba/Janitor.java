@@ -1,9 +1,14 @@
 package com.solvd.library.Iaba;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
 public class Janitor extends Person implements IHelp, IWork {
+	private static final Logger LOGGER = LogManager.getLogger(Janitor.class);
+
 	public Janitor() {
 	};
 
@@ -13,12 +18,12 @@ public class Janitor extends Person implements IHelp, IWork {
 
 	@Override
 	public void work() {
-		System.out.format("%nCleaning the library");
+		LOGGER.info("%nCleaning the library");
 	}
 
 	@Override
 	public void helpClient() {
-		System.out.format("%nThe book you are looking for is over here");
+		LOGGER.info("%nThe book you are looking for is over here");
 	}
 
 }

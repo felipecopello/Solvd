@@ -79,7 +79,7 @@ public class CustomLinkedList<T> {
 				currentNode = currentNode.next;
 			}
 		}
-		System.out.println("The list is " + size + "items long.");
+		System.out.println("The list is " + size + " items long.");
 		return size;
 	}
 
@@ -88,7 +88,7 @@ public class CustomLinkedList<T> {
 			return head;
 		} else {
 			Node<T> currentNode = head;
-			for (int i = 0; i < index - 1; i++) {
+			for (int i = 0; i < index; i++) {
 				currentNode = currentNode.next;
 			}
 			return currentNode;
