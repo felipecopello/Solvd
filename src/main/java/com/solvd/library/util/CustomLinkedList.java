@@ -79,7 +79,6 @@ public class CustomLinkedList<T> {
 				currentNode = currentNode.next;
 			}
 		}
-		System.out.println("The list is " + size + " items long.");
 		return size;
 	}
 

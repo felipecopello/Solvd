@@ -6,6 +6,8 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Course;
+import com.solvd.library.enums.Day;
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
@@ -96,6 +98,35 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 		}
 	}
 
+	public void recommendActivity() {
+		LOGGER.info("Which day of the week are you interested in doing activities");
+		String option = sc.nextLine();
+		Day d = Day.valueOf(option.toUpperCase());
+		switch (d) {
+		case TUESDAY:
+			Course.READING_FOR_BEGGINERS.info();
+			break;
+		case THURSDAY:
+			Course.READING_FOR_BEGGINERS.info();
+			break;
+		case MONDAY:
+			Course.NOVELS_CLUB.info();
+			break;
+		case FRIDAY:
+			Course.NOVELS_CLUB.info();
+			break;
+		case WEDNESDAY:
+			Course.WRITING.info();
+			break;
+		case SATURDAY:
+			Course.WRITING.info();
+			break;
+		default:
+			LOGGER.info("You should choose an option between Monday and Saturday");
+			break;
+		}
+	}
+
 	public boolean getClientLibraryCard() {
 		LOGGER.info("Do you have a library card? enter yes or no");
 		try (Scanner sc = new Scanner(System.in)) {
@@ -136,13 +167,8 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 
 	public void showBookList(Library o) {
 		LOGGER.info("Currently we have in the library");
-		int f = o.getBooklist().size();
-		for (int i = 0; i < f; i++) {
-			String book = o.getBooklist().get(i).getData().getTitle();
-			LOGGER.info(book);
+		for (int i = 0; i < o.getBooklist().size(); i++) {
+			LOGGER.info(o.getBooklist().get(i).getData().getTitle());
 		}
 	}
-
-	public static void main(String[] args) throws IdTooLongException, AgeNotIntException {
-	};
 }

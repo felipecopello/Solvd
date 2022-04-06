@@ -7,6 +7,6 @@ public interface IGreet {
 	static final Logger LOGGER = LogManager.getLogger(IGreet.class);
 
 	default void greet(String name) {
-		LOGGER.info("%nHello! my name is " + name);
+		LOGGER.info("%nHello! " + name);
 	}
 }

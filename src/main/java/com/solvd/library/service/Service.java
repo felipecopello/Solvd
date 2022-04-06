@@ -32,7 +32,7 @@ public class Service extends ClientQueue {
 		bookTaste.add("Crimes");
 		bookTaste.add("Novels");
 
-		Client client1 = new Client("Felipe Copello", 27, 01234567, bookTaste, true);
+		Client client1 = new Client(" Felipe Copello", 27, 01234567, bookTaste, true);
 		client1.greet();
 		client1.askBook();
 
@@ -40,5 +40,7 @@ public class Service extends ClientQueue {
 		librarian1.greet(client1.getName());
 		librarian1.recommendBook(client1);
 		librarian1.showBookList(library);
+		// librarian1.recieveNewClient();
+		librarian1.recommendActivity();
 	}
 }
