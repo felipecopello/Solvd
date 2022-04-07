@@ -2,15 +2,15 @@ package com.solvd.library.service;
 
 import java.util.ArrayList;
 
-import com.solvd.library.Iaba.Author;
-import com.solvd.library.Iaba.Book;
-import com.solvd.library.Iaba.Client;
-import com.solvd.library.Iaba.ClientQueue;
-import com.solvd.library.Iaba.Librarian;
-import com.solvd.library.Iaba.Library;
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NoStockException;
+import com.solvd.library.java.Author;
+import com.solvd.library.java.Book;
+import com.solvd.library.java.Client;
+import com.solvd.library.java.ClientQueue;
+import com.solvd.library.java.Librarian;
+import com.solvd.library.java.Library;
 import com.solvd.library.util.CustomLinkedList;
 
 public class Service extends ClientQueue {

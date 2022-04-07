@@ -1,4 +1,4 @@
-package com.solvd.library.Iaba;
+package com.solvd.library.java;
 
 public class ReadingSection {
 	private int chairs;

@@ -1,4 +1,4 @@
-package com.solvd.library.Iaba;
+package com.solvd.library.java;
 
 public abstract class Person {
 	private String name;

@@ -1,4 +1,4 @@
-package com.solvd.library.Iaba;
+package com.solvd.library.java;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

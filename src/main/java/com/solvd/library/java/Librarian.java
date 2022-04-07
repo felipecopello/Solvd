@@ -1,4 +1,4 @@
-package com.solvd.library.Iaba;
+package com.solvd.library.java;
 
 import java.util.ArrayList;
 import java.util.Scanner;
