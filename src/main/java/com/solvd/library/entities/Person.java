@@ -1,4 +1,4 @@
-package com.solvd.library.java;
+package com.solvd.library.entities;
 
 public abstract class Person {
 	private String name;

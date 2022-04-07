@@ -1,4 +1,4 @@
-package com.solvd.library.java;
+package com.solvd.library.entities;
 
 import java.util.ArrayList;
 import java.util.Scanner;
