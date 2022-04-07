@@ -7,15 +7,17 @@ public class Book {
 	private String title;
 	private String editorial;
 	private LocalDate publishedIn;
+	private String genre;
 
 	Book() {
 	};
 
-	public Book(Author author, String title, String editorial) {
+	public Book(Author author, String title, String editorial, String genre) {
 		setAuthor(author);
 		setTitle(title);
 		setEditorial(editorial);
 		setPublishedIn(LocalDate.now());
+		setGenre(genre);
 	}
 
 	public Author getAuthor() {
@@ -48,6 +50,14 @@ public class Book {
 
 	public void setPublishedIn(LocalDate publishedIn) {
 		this.publishedIn = publishedIn;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 }

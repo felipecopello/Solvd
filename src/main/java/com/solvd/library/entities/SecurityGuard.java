@@ -45,4 +45,5 @@ public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 	public boolean isClient(HashSet<String> clients, String client) {
 		return clients.contains(client);
 	}
+
 }

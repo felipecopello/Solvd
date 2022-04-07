@@ -9,7 +9,7 @@ import com.solvd.library.util.CustomLinkedList;
 
 public class Library {
 	private String name;
-	private ArrayList<String> bookSections = new ArrayList<>();
+	private ArrayList<BookSection> bookSections = new ArrayList<>();
 	private ArrayList<String> readingSections = new ArrayList<>();
 	private static CustomLinkedList<Book> bookList = new CustomLinkedList<Book>();
 	private int computers;
@@ -31,11 +31,11 @@ public class Library {
 			int computers, int printers) {
 	};
 
-	public ArrayList<String> getBookSections() {
+	public ArrayList<BookSection> getBookSection() {
 		return bookSections;
 	}
 
-	public void setBookSections(ArrayList<String> bookSections) {
+	public void setBookSection(ArrayList<BookSection> bookSections) {
 		this.bookSections = bookSections;
 	}
 

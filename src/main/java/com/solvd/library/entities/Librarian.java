@@ -14,10 +14,9 @@ import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
 import com.solvd.library.util.GroupedInterface;
-import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IValidate;
 
-public class Librarian extends Person implements GroupedInterface, IGreet, IValidate {
+public class Librarian extends Person implements GroupedInterface {
 	private static final Logger LOGGER = LogManager.getLogger(Librarian.class);
 	private Scanner sc = new Scanner(System.in);
 	private String crimes = "Crimes";
@@ -33,12 +32,17 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 
 	@Override
 	public void helpClient() {
-		LOGGER.info("%nThe book you are looking for is over there");
+		LOGGER.info("The book you are looking for is over there");
 	}
 
 	@Override
 	public void work() {
-		LOGGER.info("%nOrganizing books");
+		LOGGER.info("Organizing books");
+	}
+
+	@Override
+	public void interact() {
+		LOGGER.info("What can i do for you today?");
 	}
 
 	public String getClientName() {
@@ -138,7 +142,7 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 
 	public void recommendBook(Object client) {
 		ArrayList<String> taste = ((Client) client).getBookTaste();
-		boolean card = ((Client) client).getLibraryCard();
+		boolean card = ((Client) client).getLibraryCard().isOwned();
 
 		if (card == true) {
 			for (String x : taste) {
@@ -160,7 +164,8 @@ public class Librarian extends Person implements GroupedInterface, IGreet, IVali
 		int age = getClientAge();
 		int id = getClientId();
 		ArrayList<String> bookTaste = getClientBookTaste();
-		boolean card = getClientLibraryCard();
+		boolean hasCard = getClientLibraryCard();
+		LibraryCard card = new LibraryCard(name, hasCard);
 		Client client = new Client(name, age, id, bookTaste, card);
 		recommendBook(client);
 	}

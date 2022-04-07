@@ -10,6 +10,11 @@ public class LibraryCard {
 	public LibraryCard() {
 	}
 
+	public LibraryCard(String owner, boolean owned) {
+		this.owner = owner;
+		this.owned = owned;
+	}
+
 	public LocalDate getIssueDate() {
 		return issueDate;
 	}

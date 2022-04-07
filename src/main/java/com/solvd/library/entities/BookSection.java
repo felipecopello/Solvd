@@ -1,19 +1,19 @@
 package com.solvd.library.entities;
 
-import java.util.ArrayList;
-
 public class BookSection {
+	private String name;
 	private int bookCapacity;
 	private int bookSelfs;
-	private static ArrayList<String> genrasIncluded = new ArrayList<>();
+	private String genra;
 
-	BookSection() {
+	public BookSection() {
 	};
 
-	BookSection(int bookCapacity, int bookSelfs, ArrayList<String> genrasIncluded) {
+	public BookSection(String name, int bookCapacity, int bookSelfs, String genra) {
 		setBookCapacity(bookCapacity);
 		setBookSelfs(bookSelfs);
-		setGenrasIncluded(genrasIncluded);
+		setGenra(genra);
+		setName(name);
 	};
 
 	public int getBookCapacity() {
@@ -32,12 +32,20 @@ public class BookSection {
 		this.bookSelfs = bookSelfs;
 	}
 
-	public static ArrayList<String> getGenrasIncluded() {
-		return genrasIncluded;
+	public String getName() {
+		return name;
 	}
 
-	public static void setGenrasIncluded(ArrayList<String> genrasIncluded) {
-		BookSection.genrasIncluded = genrasIncluded;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGenra() {
+		return genra;
+	}
+
+	public void setGenra(String genra) {
+		this.genra = genra;
 	}
 
 }
