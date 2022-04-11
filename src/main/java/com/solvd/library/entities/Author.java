@@ -40,4 +40,9 @@ public class Author extends Person {
 		this.writtenBooks = writtenBooks;
 	}
 
+	@Override
+	public void interact() {
+		LOGGER.info("Im here to give a talk about my book.");
+	}
+
 }

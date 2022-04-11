@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.solvd.library.util.CustomLinkedList;
 
 public abstract class Person {
-	private static final Logger LOGGER = LogManager.getLogger(Librarian.class);
+	private static final Logger LOGGER = LogManager.getLogger(Person.class);
 	private String name;
 	private int age;
 	private int id;
@@ -46,9 +46,7 @@ public abstract class Person {
 		this.id = id;
 	}
 
-	public void interact() {
-		LOGGER.info("How are you doing today?");
-	}
+	public abstract void interact();
 
 	public Book findBook(Library o, String title) {
 		CustomLinkedList<Book> list = o.getBooklist();

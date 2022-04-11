@@ -26,4 +26,9 @@ public class Janitor extends Person implements IHelp, IWork {
 		LOGGER.info("%nThe book you are looking for is over here");
 	}
 
+	@Override
+	public void interact() {
+		LOGGER.info("Be careful the floor is wet.");
+	}
+
 }

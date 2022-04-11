@@ -2,6 +2,9 @@ package com.solvd.library.service;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.solvd.library.entities.Author;
 import com.solvd.library.entities.Book;
 import com.solvd.library.entities.BookSection;
@@ -10,13 +13,17 @@ import com.solvd.library.entities.ClientQueue;
 import com.solvd.library.entities.Librarian;
 import com.solvd.library.entities.Library;
 import com.solvd.library.entities.LibraryCard;
+import com.solvd.library.entities.Printer;
 import com.solvd.library.entities.SecurityGuard;
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NoStockException;
 import com.solvd.library.util.CustomLinkedList;
+import com.solvd.library.util.IPrintable;
 
 public class Service extends ClientQueue {
+	private static final Logger LOGGER = LogManager.getLogger(Service.class);
+
 	public static void main(String[] args) throws IdTooLongException, NoStockException, AgeNotIntException {
 		Library library = new Library();
 		library.welcome();
@@ -59,5 +66,8 @@ public class Service extends ClientQueue {
 
 		SecurityGuard securityGuard1 = new SecurityGuard();
 		securityGuard1.whereIsBook(library, "And Then There Were None");
+
+		IPrintable lambdaPrintable = () -> LOGGER.info("Printing..");
+		Printer.printThing(lambdaPrintable);
 	}
 }

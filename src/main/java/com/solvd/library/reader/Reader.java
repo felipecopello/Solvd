@@ -16,7 +16,7 @@ public class Reader {
 	private static final File OUTPUT_FILE = new File("output.txt");
 	private static TreeSet<String> arrayOutput = new TreeSet<>();
 
-	private static Pattern pattern = Pattern.compile("\\s|,|\\.|\\(|\\)|!");;
+	private static Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
 
 	public static void main(String[] arg) {
 		try {

@@ -46,4 +46,9 @@ public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
 		return clients.contains(client);
 	}
 
+	@Override
+	public void interact() {
+		LOGGER.info("What can i do for you today?");
+	}
+
 }
