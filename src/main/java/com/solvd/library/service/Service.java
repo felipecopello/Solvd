@@ -25,13 +25,13 @@ public class Service extends ClientQueue {
 	private static final Logger LOGGER = LogManager.getLogger(Service.class);
 
 	public static void main(String[] args) throws IdTooLongException, NoStockException, AgeNotIntException {
-		Library library = new Library();
-		library.welcome();
+		Library publicLibrary = new Library();
+		publicLibrary.welcome();
 
-		BookSection bookSection1 = new BookSection("Connan Doyle", 200, 20, "Crimes");
+		BookSection connanDoyleBookSections = new BookSection("Connan Doyle", 200, 20, "Crimes");
 		ArrayList<BookSection> bookSections = new ArrayList<>();
-		bookSections.add(bookSection1);
-		library.setBookSection(bookSections);
+		bookSections.add(connanDoyleBookSections);
+		publicLibrary.setBookSection(bookSections);
 
 		ArrayList<Book> writtenBooks = new ArrayList<Book>();
 		Author agatha = new Author("Agatha Christie", 80, 12345678, writtenBooks, "Crimes");
@@ -41,31 +41,31 @@ public class Service extends ClientQueue {
 		CustomLinkedList<Book> bookList = new CustomLinkedList<Book>();
 		bookList.insert(book1);
 		bookList.insert(book2);
-		library.setBooklist(bookList);
+		publicLibrary.setBooklist(bookList);
 
 		ArrayList<String> bookTaste = new ArrayList<>();
 		bookTaste.add("Crimes");
 		bookTaste.add("Novels");
 
-		LibraryCard librarycard = new LibraryCard("Felipe Copello", true);
+		LibraryCard libraryCardFelipe = new LibraryCard("Felipe Copello", true);
 
-		Client client1 = new Client(" Felipe Copello", 27, 01234567, bookTaste, librarycard);
-		client1.greet();
-		client1.askBook();
+		Client clientFelipe = new Client(" Felipe Copello", 27, 01234567, bookTaste, libraryCardFelipe);
+		clientFelipe.greet();
+		clientFelipe.askBook();
 
-		Librarian librarian1 = new Librarian();
-		librarian1.greet(client1.getName());
-		librarian1.recommendBook(client1);
-		librarian1.showBookList(library);
+		Librarian librarianSusan = new Librarian();
+		librarianSusan.greet(clientFelipe.getName());
+		librarianSusan.recommendBook(clientFelipe);
+		librarianSusan.showBookList(publicLibrary);
 		// Next 3 functions require console input
 		// librarian1.recieveNewClient();
-		// librarian1.recommendActivity();
+		librarianSusan.recommendActivity();
 		// recieveClientQueue(2);
-		library.setBooklist(client1.retrieveBook(library, "Death on the Nile"));
-		librarian1.showBookList(library);
+		publicLibrary.setBooklist(clientFelipe.retrieveBook(publicLibrary, "Death on the Nile"));
+		librarianSusan.showBookList(publicLibrary);
 
-		SecurityGuard securityGuard1 = new SecurityGuard();
-		securityGuard1.whereIsBook(library, "And Then There Were None");
+		SecurityGuard securityPedro = new SecurityGuard();
+		securityPedro.whereIsBook(publicLibrary, "And Then There Were None");
 
 		IPrintable lambdaPrintable = () -> LOGGER.info("Printing..");
 		Printer.printThing(lambdaPrintable);
