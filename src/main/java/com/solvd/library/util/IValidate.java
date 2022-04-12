@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Genre;
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
@@ -16,12 +17,11 @@ public interface IValidate {
 
 	public static String validateName(char[] ch) throws NameNotCharException {
 		String validatedName = new String();
-		for (int i = 0; i < ch.length; i++) {
-			if (Character.isLetter(ch[i])) {
-				char a = ch[i];
+		for (char a : ch) {
+			if (Character.isLetter(a)) {
 				validatedName = validatedName + a;
 			} else {
-				LOGGER.error(ch[i] + " is not a letter");
+				LOGGER.error(a + " is not a letter");
 				throw new NameNotCharException("There can only be letters in Name field");
 			}
 		}
@@ -30,9 +30,9 @@ public interface IValidate {
 
 	public static int validateAge(char[] age) throws AgeNotIntException {
 		StringBuilder str = new StringBuilder();
-		for (int i = 0; i < age.length; i++) {
-			if (Character.isDigit(age[i])) {
-				str.append(age[i]);
+		for (char i : age) {
+			if (Character.isDigit(i)) {
+				str.append(i);
 			} else {
 				throw new AgeNotIntException("Age field can only be ints");
 			}
@@ -52,14 +52,14 @@ public interface IValidate {
 	}
 
 	public static boolean validateBookTaste(ArrayList<String> taste) throws NoStockException {
-		String[] availableGenres = { "Crimes", "Science Fiction", "Philosophy" };
 		boolean genreAvailable = false;
-		for (int i = 0; i < taste.size(); i++) {
-			for (int j = 0; j < availableGenres.length; j++) {
-				if (taste.get(i).equalsIgnoreCase(availableGenres[j])) {
-					genreAvailable = true;
-					LOGGER.info("We actually have " + taste.get(i) + " available");
-				}
+		for (String t : taste) {
+			try {
+				Genre g = Genre.valueOf(t.toUpperCase());
+				genreAvailable = true;
+				LOGGER.info("We actually have " + g + " available");
+			} catch (Exception e) {
+				LOGGER.info("Sorry, we dont have any " + t + " books in the library");
 			}
 		}
 		if (genreAvailable == false) {

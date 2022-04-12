@@ -5,21 +5,25 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Sex;
 import com.solvd.library.util.CustomLinkedList;
 
 public abstract class Person {
+
 	private static final Logger LOGGER = LogManager.getLogger(Person.class);
 	private String name;
 	private int age;
 	private int id;
+	private Sex gender;
 
 	public Person() {
 	};
 
-	public Person(String name, int age, int id) {
+	public Person(String name, int age, int id, Sex gender) {
 		setName(name);
 		setAge(age);
 		setId(id);
+		setGender(gender);
 	};
 
 	public String getName() {
@@ -69,12 +73,19 @@ public abstract class Person {
 		Book book = findBook(o, title);
 		if (book.getTitle().equals(title)) {
 			ArrayList<BookSection> bookSections = o.getBookSection();
-			for (int j = 0; j < bookSections.size(); j++) {
-				BookSection innerBookSection = bookSections.get(j);
-				if (innerBookSection.getGenra().equalsIgnoreCase(book.getGenre())) {
-					LOGGER.info("The book " + "-" + title + "-" + " is in Section: " + innerBookSection.getName());
+			for (BookSection b : bookSections) {
+				if (b.getGenre().equalsIgnoreCase(book.getGenre())) {
+					LOGGER.info("The book " + "-" + title + "-" + " is in Section: " + b.getName());
 				}
 			}
 		}
+	}
+
+	public Sex getGender() {
+		return gender;
+	}
+
+	public void setGender(Sex gender) {
+		this.gender = gender;
 	}
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Sex;
+
 public class Author extends Person {
 	private ArrayList<Book> writtenBooks = new ArrayList<>();
 	private String genre;
@@ -13,8 +15,8 @@ public class Author extends Person {
 	public Author() {
 	};
 
-	public Author(String name, int age, int id, ArrayList<Book> writtenBooks, String genre) {
-		super(name, age, id);
+	public Author(String name, int age, int id, ArrayList<Book> writtenBooks, String genre, Sex gender) {
+		super(name, age, id, gender);
 		setWrittenBooks(writtenBooks);
 		setGenre(genre);
 	}

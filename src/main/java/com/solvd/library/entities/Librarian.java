@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.solvd.library.enums.Course;
 import com.solvd.library.enums.Day;
+import com.solvd.library.enums.Genre;
+import com.solvd.library.enums.Sex;
 import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NameNotCharException;
@@ -19,16 +21,13 @@ import com.solvd.library.util.IValidate;
 
 public class Librarian extends Person implements GroupedInterface {
 	private static final Logger LOGGER = LogManager.getLogger(Librarian.class);
-	private Scanner sc = new Scanner(System.in);
-	private String crimes = "Crimes";
-	private String philosophy = "Philosophy";
-	private String scyFy = "Science Fiction";
+	private static Scanner sc = new Scanner(System.in);
 
 	public Librarian() {
 	}
 
-	public Librarian(String name, int age, int id) {
-		super(name, age, id);
+	public Librarian(String name, int age, int id, Sex gender) {
+		super(name, age, id, gender);
 	}
 
 	@Override
@@ -155,16 +154,28 @@ public class Librarian extends Person implements GroupedInterface {
 
 		if (card == true) {
 			for (String x : taste) {
-				if (x.equalsIgnoreCase(crimes)) {
-					LOGGER.info("%nIf you like " + crimes + " you should read Agatha Christie");
-				} else if (x.equalsIgnoreCase(philosophy)) {
-					LOGGER.info("%nIf you like " + philosophy + " you should read Friederich Nietzche");
-				} else if (x.equalsIgnoreCase(scyFy)) {
-					LOGGER.info("%nYou should read George Orwell");
+				try {
+					Genre g = Genre.valueOf(x.toUpperCase());
+					switch (g) {
+					case CRIMES:
+						LOGGER.info("If you like crimes you should read Agatha Christie");
+						break;
+					case PHILOSOPHY:
+						LOGGER.info("If you like philosophy you should read Friederich Nietzche");
+						break;
+					case SCIENCE_FICTION:
+						LOGGER.info("If you like you should read George Orwell");
+						break;
+					default:
+						LOGGER.info("At the moment we dont have any genre you like");
+						break;
+					}
+				} catch (Exception e) {
+					LOGGER.info("Sorry, we dont have any " + x + " books in the library");
 				}
 			}
 		} else {
-			LOGGER.error("%nSorry you do not have a valid Library Card");
+			LOGGER.error("Sorry you do not have a valid Library Card");
 		}
 	};
 
@@ -175,7 +186,7 @@ public class Librarian extends Person implements GroupedInterface {
 		ArrayList<String> bookTaste = getClientBookTaste();
 		boolean hasCard = getClientLibraryCard();
 		LibraryCard card = new LibraryCard(name, hasCard);
-		Client client = new Client(name, age, id, bookTaste, card);
+		Client client = new Client(name, age, id, bookTaste, card, Sex.UNDEFINED);
 		recommendBook(client);
 	}
 

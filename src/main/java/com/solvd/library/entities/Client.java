@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Sex;
 import com.solvd.library.util.CustomLinkedList;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IRead;
@@ -17,12 +18,13 @@ public class Client extends Person implements IRead, IGreet {
 	public Client() {
 	}
 
-	public Client(String name, int age, int id, ArrayList<String> bookTaste, LibraryCard libraryCard) {
+	public Client(String name, int age, int id, ArrayList<String> bookTaste, LibraryCard libraryCard, Sex gender) {
 		setName(name);
 		setAge(age);
 		setId(id);
 		setBookTaste(bookTaste);
 		this.libraryCard = libraryCard;
+		setGender(gender);
 	}
 
 	public void greet() {

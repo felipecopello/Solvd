@@ -3,6 +3,7 @@ package com.solvd.library.entities;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Sex;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
@@ -12,8 +13,8 @@ public class Janitor extends Person implements IHelp, IWork {
 	public Janitor() {
 	};
 
-	public Janitor(String name, int age, int id) {
-		super(name, age, id);
+	public Janitor(String name, int age, int id, Sex gender) {
+		super(name, age, id, gender);
 	}
 
 	@Override

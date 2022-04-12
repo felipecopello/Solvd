@@ -4,15 +4,15 @@ public class BookSection {
 	private String name;
 	private int bookCapacity;
 	private int bookSelfs;
-	private String genra;
+	private String genre;
 
 	public BookSection() {
 	};
 
-	public BookSection(String name, int bookCapacity, int bookSelfs, String genra) {
+	public BookSection(String name, int bookCapacity, int bookSelfs, String genre) {
 		setBookCapacity(bookCapacity);
 		setBookSelfs(bookSelfs);
-		setGenra(genra);
+		setGenre(genre);
 		setName(name);
 	};
 
@@ -40,12 +40,12 @@ public class BookSection {
 		this.name = name;
 	}
 
-	public String getGenra() {
-		return genra;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setGenra(String genra) {
-		this.genra = genra;
+	public void setGenre(String genra) {
+		this.genre = genra;
 	}
 
 }
