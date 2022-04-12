@@ -19,6 +19,7 @@ import com.solvd.library.exceptions.AgeNotIntException;
 import com.solvd.library.exceptions.IdTooLongException;
 import com.solvd.library.exceptions.NoStockException;
 import com.solvd.library.util.CustomLinkedList;
+import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IPrintable;
 
 public class Service extends ClientQueue {
@@ -54,12 +55,13 @@ public class Service extends ClientQueue {
 		clientFelipe.askBook();
 
 		Librarian librarianSusan = new Librarian();
-		librarianSusan.greet(clientFelipe.getName());
+		IGreet lambdaGreeting = () -> LOGGER.info("Hello" + clientFelipe.getName());
+		Librarian.greeting(lambdaGreeting);
 		librarianSusan.recommendBook(clientFelipe);
 		librarianSusan.showBookList(publicLibrary);
 		// Next 3 functions require console input
 		// librarian1.recieveNewClient();
-		librarianSusan.recommendActivity();
+		// librarianSusan.recommendActivity();
 		// recieveClientQueue(2);
 		publicLibrary.setBooklist(clientFelipe.retrieveBook(publicLibrary, "Death on the Nile"));
 		librarianSusan.showBookList(publicLibrary);

@@ -14,6 +14,7 @@ import com.solvd.library.exceptions.NameNotCharException;
 import com.solvd.library.exceptions.NoLibraryCardException;
 import com.solvd.library.exceptions.NoStockException;
 import com.solvd.library.util.GroupedInterface;
+import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IValidate;
 
 public class Librarian extends Person implements GroupedInterface {
@@ -43,6 +44,14 @@ public class Librarian extends Person implements GroupedInterface {
 	@Override
 	public void interact() {
 		LOGGER.info("What can i do for you today?");
+	}
+
+	@Override
+	public void greet() {
+	}
+
+	public static void greeting(IGreet thing) {
+		thing.greet();
 	}
 
 	public String getClientName() {

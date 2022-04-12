@@ -5,11 +5,10 @@ import java.util.HashSet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IHelp;
 import com.solvd.library.util.IWork;
 
-public class SecurityGuard extends Person implements IHelp, IWork, IGreet {
+public class SecurityGuard extends Person implements IHelp, IWork {
 	private HashSet<String> clients = new HashSet<>();
 	private static final Logger LOGGER = LogManager.getLogger(SecurityGuard.class);
 

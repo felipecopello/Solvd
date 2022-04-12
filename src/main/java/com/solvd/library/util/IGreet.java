@@ -1,12 +1,6 @@
 package com.solvd.library.util;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+@FunctionalInterface
 public interface IGreet {
-	static final Logger LOGGER = LogManager.getLogger(IGreet.class);
-
-	default void greet(String name) {
-		LOGGER.info("%nHello! " + name);
-	}
+	void greet();
 }

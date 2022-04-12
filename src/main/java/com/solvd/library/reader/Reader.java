@@ -3,7 +3,8 @@ package com.solvd.library.reader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.TreeSet;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
@@ -14,7 +15,7 @@ public class Reader {
 	private static final Logger LOGGER = LogManager.getLogger(Reader.class);
 	private static final File INPUT_FILE = new File("src/main/resources/article.txt");
 	private static final File OUTPUT_FILE = new File("output.txt");
-	private static TreeSet<String> arrayOutput = new TreeSet<>();
+	private static Map<String, Integer> mapOutput = new TreeMap<>();
 
 	private static Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
 
@@ -23,21 +24,33 @@ public class Reader {
 			String fileAsString = FileUtils.readFileToString(INPUT_FILE, StandardCharsets.UTF_8);
 			String lowerFileString = fileAsString.toLowerCase();
 			String[] fileAsStrArray = pattern.split(lowerFileString);
-			int n = 0;
 
 			for (int i = 0; i < fileAsStrArray.length; i++) {
-				for (int j = 1; j < fileAsStrArray.length; j++) {
-					if (fileAsStrArray[i].equals(fileAsStrArray[j])) {
-						n++;
-					}
+
+				if (mapOutput.containsKey(fileAsStrArray[i])) {
+					int n = mapOutput.get(fileAsStrArray[i]);
+					n++;
+					mapOutput.replace(fileAsStrArray[i], n);
+				} else {
+					mapOutput.put(fileAsStrArray[i], 1);
 				}
-				arrayOutput.add(fileAsStrArray[i] + "__" + n);
-				n = 0;
 			}
-			FileUtils.writeLines(OUTPUT_FILE, arrayOutput);
+			for (String key : mapOutput.keySet()) {
+				System.out.println(key + " = " + mapOutput.get(key));
+			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		mapOutput.entrySet().forEach(entry -> {
+			try {
+				System.out.println(entry.getKey() + " = " + entry.getValue());
+				FileUtils.writeStringToFile(OUTPUT_FILE,
+						entry.getKey() + " = " + entry.getValue() + System.lineSeparator(), StandardCharsets.UTF_8,
+						true);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 		LOGGER.info("The program exited without error.");
 	}
 }
