@@ -1,7 +1,6 @@
 package com.solvd.library.entities;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -58,7 +57,7 @@ public class SecurityGuard extends Person implements IHelp, IWork {
 		LOGGER.info("What can i do for you today?");
 	}
 
-	public List<Client> filterClients(BiFunction<HashSet<Client>, Sex, List<Client>> clientsFilter, Sex sex) {
+	public HashSet<Client> filterClients(BiFunction<HashSet<Client>, Sex, HashSet<Client>> clientsFilter, Sex sex) {
 		return clientsFilter.apply(clients, sex);
 	}
 

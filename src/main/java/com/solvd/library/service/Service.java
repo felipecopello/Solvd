@@ -1,7 +1,6 @@
 package com.solvd.library.service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -50,9 +49,11 @@ public class Service {
 
 		LibraryCard libraryCardFelipe = new LibraryCard("Felipe Copello", true);
 		LibraryCard libraryCardPepe = new LibraryCard("Pepe", false);
+		LibraryCard libraryCardMariana = new LibraryCard("Mariana", true);
 
 		Client clientPepe = new Client("Pepe", 60, 01222567, libraryCardPepe, Sex.MALE);
 		Client clientFelipe = new Client(" Felipe Copello", 27, 01234567, libraryCardFelipe, Sex.MALE);
+		Client clientMariana = new Client("Mariana", 40, 11122233, libraryCardMariana, Sex.FEMALE);
 		clientFelipe.addToBookTaste(Genre.CRIMES);
 		clientFelipe.addToBookTaste(Genre.NOVELS);
 		clientFelipe.greet();
@@ -67,6 +68,7 @@ public class Service {
 		SecurityGuard securityPedro = new SecurityGuard();
 		securityPedro.addClient(clientFelipe);
 		securityPedro.addClient(clientPepe);
+		securityPedro.addClient(clientMariana);
 
 		Consumer<HashSet<Client>> checkLibraryCard = (HashSet<Client> x) -> x.stream()
 				.filter(client -> client.getLibraryCard().isOwned() == true)
@@ -75,35 +77,33 @@ public class Service {
 
 		securityPedro.whereIsBook(publicLibrary, "Death on the Nile");
 		// Next 3 functions require console input
-		// librarianSusan.recieveNewClient();
 		// librarianSusan.recommendActivity();
+		// librarianSusan.recieveNewClient();
 		// recieveClientQueue(2);
 		publicLibrary.setBooklist(clientFelipe.retrieveBook(publicLibrary, "Death on the Nile"));
 
 		Printer lenovoPrinter = new Printer();
-		lenovoPrinter.setToPrint(book1.getTitle() + " was written by " + book1.getAuthor());
+		lenovoPrinter.setToPrint(book1.getTitle() + " was written by " + book1.getAuthor().getName());
 		IPrintable<String> lambdaPrintable = x -> LOGGER.info(x);
 		lenovoPrinter.printThing(lambdaPrintable);
 
 		ICalculate avg = (a, b) -> (a.getAge() + b.getAge()) / 2;
 		LOGGER.info("The average age of this clients is " + Client.operate(clientFelipe, clientPepe, avg));
 
-		BiFunction<HashSet<Client>, Sex, List<Client>> filterBySex = (HashSet<Client> x, Sex s) -> x.stream()
-				.filter(client -> client.getGender() == s).collect(Collectors.toList());
-
-		BiFunction<HashSet<Client>, Sex, List<Client>> filterBySexAndPrint = (HashSet<Client> x, Sex s) -> {
-			List<Client> list = x.stream().filter(client -> client.getGender() == s).collect(Collectors.toList());
-			LOGGER.info("The male clients are: ");
-			for (Client c : list) {
-				LOGGER.info(c.getName());
-			}
-			return list;
+		BiFunction<HashSet<Client>, Sex, HashSet<Client>> filterBySex = (HashSet<Client> x, Sex s) -> {
+			x.stream().filter(client -> client.getGender() == s).collect(Collectors.toList());
+			return x;
 		};
 
-		BiFunction<HashSet<Client>, Sex, List<Client>> filterBySexAgeOver30 = (HashSet<Client> x, Sex s) -> {
-			List<Client> list = x.stream().filter(client -> client.getGender() == s && client.getAge() > 30)
-					.collect(Collectors.toList());
-			return list;
+		BiFunction<HashSet<Client>, Sex, HashSet<Client>> filterBySexAndPrint = (HashSet<Client> x, Sex s) -> {
+			x.stream().filter(client -> client.getGender() == s).collect(Collectors.toList())
+					.forEach(client -> LOGGER.info(client.getName()));
+			return x;
+		};
+
+		BiFunction<HashSet<Client>, Sex, HashSet<Client>> filterBySexAgeOver30 = (HashSet<Client> x, Sex s) -> {
+			x.stream().filter(client -> client.getGender() == s && client.getAge() > 30).collect(Collectors.toList());
+			return x;
 		};
 
 		securityPedro.filterClients(filterBySex, Sex.MALE);

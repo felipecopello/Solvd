@@ -54,7 +54,7 @@ public class Librarian extends Person implements GroupedInterface {
 	}
 
 	public String getClientName() {
-		LOGGER.info("%nEnter your name: ");
+		LOGGER.info("Enter your name: ");
 		String clientName = "";
 		try {
 			clientName = sc.nextLine();
