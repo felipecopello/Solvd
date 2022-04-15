@@ -92,15 +92,15 @@ public class Librarian extends Person implements GroupedInterface {
 		}
 	}
 
-	public ArrayList<String> getClientBookTaste() throws NoStockException {
+	public ArrayList<Genre> getClientBookTaste() throws NoStockException {
 		LOGGER.info("How many book genres do you like?");
 		try {
 			int length = sc.nextInt();
-			ArrayList<String> clientBookTaste = new ArrayList<>();
+			ArrayList<Genre> clientBookTaste = new ArrayList<>();
 			LOGGER.info("What genres of books do you like?");
 			for (int i = 0; i < length; i++) {
 				String userInput = sc.next();
-				clientBookTaste.add(userInput);
+				clientBookTaste.add(Genre.valueOf(userInput.toUpperCase()));
 			}
 			LOGGER.info("I like those books too");
 			IValidate.validateBookTaste(clientBookTaste);
@@ -149,14 +149,13 @@ public class Librarian extends Person implements GroupedInterface {
 	}
 
 	public void recommendBook(Object client) {
-		ArrayList<String> taste = ((Client) client).getBookTaste();
+		ArrayList<Genre> taste = ((Client) client).getBookTaste();
 		boolean card = ((Client) client).getLibraryCard().isOwned();
 
 		if (card == true) {
-			for (String x : taste) {
+			for (Genre x : taste) {
 				try {
-					Genre g = Genre.valueOf(x.toUpperCase());
-					switch (g) {
+					switch (x) {
 					case CRIMES:
 						LOGGER.info("If you like crimes you should read Agatha Christie");
 						break;
@@ -167,11 +166,11 @@ public class Librarian extends Person implements GroupedInterface {
 						LOGGER.info("If you like you should read George Orwell");
 						break;
 					default:
-						LOGGER.info("At the moment we dont have any genre you like");
+						LOGGER.info("Sorry, we dont have any " + x + " books in the library");
 						break;
 					}
 				} catch (Exception e) {
-					LOGGER.info("Sorry, we dont have any " + x + " books in the library");
+					LOGGER.info("Sorry, we dont have any genre you like in the library");
 				}
 			}
 		} else {
@@ -183,7 +182,7 @@ public class Librarian extends Person implements GroupedInterface {
 		String name = getClientName();
 		int age = getClientAge();
 		int id = getClientId();
-		ArrayList<String> bookTaste = getClientBookTaste();
+		ArrayList<Genre> bookTaste = getClientBookTaste();
 		boolean hasCard = getClientLibraryCard();
 		LibraryCard card = new LibraryCard(name, hasCard);
 		Client client = new Client(name, age, id, bookTaste, card, Sex.UNDEFINED);

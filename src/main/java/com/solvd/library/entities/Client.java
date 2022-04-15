@@ -5,24 +5,34 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.solvd.library.enums.Genre;
 import com.solvd.library.enums.Sex;
 import com.solvd.library.util.CustomLinkedList;
+import com.solvd.library.util.ICalculate;
 import com.solvd.library.util.IGreet;
 import com.solvd.library.util.IRead;
 
 public class Client extends Person implements IRead, IGreet {
-	private ArrayList<String> bookTaste = new ArrayList<>();
+	private ArrayList<Genre> bookTaste = new ArrayList<>();
 	private LibraryCard libraryCard;
 	private static final Logger LOGGER = LogManager.getLogger(Client.class);
 
 	public Client() {
 	}
 
-	public Client(String name, int age, int id, ArrayList<String> bookTaste, LibraryCard libraryCard, Sex gender) {
+	public Client(String name, int age, int id, ArrayList<Genre> bookTaste, LibraryCard libraryCard, Sex gender) {
 		setName(name);
 		setAge(age);
 		setId(id);
 		setBookTaste(bookTaste);
+		this.libraryCard = libraryCard;
+		setGender(gender);
+	}
+
+	public Client(String name, int age, int id, LibraryCard libraryCard, Sex gender) {
+		setName(name);
+		setAge(age);
+		setId(id);
 		this.libraryCard = libraryCard;
 		setGender(gender);
 	}
@@ -39,13 +49,17 @@ public class Client extends Person implements IRead, IGreet {
 		this.libraryCard = libraryCard;
 	}
 
-	public ArrayList<String> getBookTaste() {
+	public ArrayList<Genre> getBookTaste() {
 		return bookTaste;
 	}
 
-	public void setBookTaste(ArrayList<String> bookTaste) {
+	public void setBookTaste(ArrayList<Genre> bookTaste) {
 		this.bookTaste = bookTaste;
 	};
+
+	public void addToBookTaste(Genre t) {
+		bookTaste.add(t);
+	}
 
 	public void askBook() {
 		LOGGER.info("Can you recommend me a book?");
@@ -56,10 +70,8 @@ public class Client extends Person implements IRead, IGreet {
 		LOGGER.info("Beautiful morning, isnt it?");
 	}
 
-	public void printBookTaste(ArrayList<String> myArray) {
-		for (int i = 0; i < myArray.size(); i++) {
-			LOGGER.info(myArray.get(i) + " ");
-		}
+	public void printBookTaste(ArrayList<Genre> myArray) {
+		myArray.stream().forEach(taste -> LOGGER.info(taste));
 	}
 
 	public CustomLinkedList<Book> retrieveBook(Library o, String title) {
@@ -72,6 +84,10 @@ public class Client extends Person implements IRead, IGreet {
 			}
 		}
 		return list;
+	}
+
+	public static int operate(Client a, Client b, ICalculate c) {
+		return c.operation(a, b);
 	}
 
 }

@@ -74,7 +74,7 @@ public abstract class Person {
 		if (book.getTitle().equals(title)) {
 			ArrayList<BookSection> bookSections = o.getBookSection();
 			for (BookSection b : bookSections) {
-				if (b.getGenre().equalsIgnoreCase(book.getGenre())) {
+				if (b.getGenre().equals(book.getGenre())) {
 					LOGGER.info("The book " + "-" + title + "-" + " is in Section: " + b.getName());
 				}
 			}

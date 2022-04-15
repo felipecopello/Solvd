@@ -17,7 +17,7 @@ public class Reader {
 	private static final File OUTPUT_FILE = new File("output.txt");
 	private static Map<String, Integer> mapOutput = new TreeMap<>();
 
-	private static Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+	private static Pattern pattern = Pattern.compile("[^a-zA-Z]");
 
 	public static void main(String[] arg) {
 		try {
@@ -26,24 +26,21 @@ public class Reader {
 			String[] fileAsStrArray = pattern.split(lowerFileString);
 
 			for (int i = 0; i < fileAsStrArray.length; i++) {
-
-				if (mapOutput.containsKey(fileAsStrArray[i])) {
-					int n = mapOutput.get(fileAsStrArray[i]);
-					n++;
-					mapOutput.replace(fileAsStrArray[i], n);
-				} else {
-					mapOutput.put(fileAsStrArray[i], 1);
+				if (!fileAsStrArray[i].isBlank()) {
+					if (mapOutput.containsKey(fileAsStrArray[i])) {
+						int n = mapOutput.get(fileAsStrArray[i]);
+						n++;
+						mapOutput.replace(fileAsStrArray[i], n);
+					} else {
+						mapOutput.put(fileAsStrArray[i], 1);
+					}
 				}
-			}
-			for (String key : mapOutput.keySet()) {
-				System.out.println(key + " = " + mapOutput.get(key));
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 		mapOutput.entrySet().forEach(entry -> {
 			try {
-				System.out.println(entry.getKey() + " = " + entry.getValue());
 				FileUtils.writeStringToFile(OUTPUT_FILE,
 						entry.getKey() + " = " + entry.getValue() + System.lineSeparator(), StandardCharsets.UTF_8,
 						true);

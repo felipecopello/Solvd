@@ -1,7 +1,7 @@
 package com.solvd.library.enums;
 
 public enum Genre {
-	CRIMES("Crimes"), PHILOSOPHY("Philosophy"), SCIENCE_FICTION("Science Fiction");
+	CRIMES("Crimes"), PHILOSOPHY("Philosophy"), SCIENCE_FICTION("Science Fiction"), NOVELS("Novels");
 
 	private String genre;
 

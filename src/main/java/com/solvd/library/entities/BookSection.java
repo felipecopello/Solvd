@@ -1,15 +1,17 @@
 package com.solvd.library.entities;
 
+import com.solvd.library.enums.Genre;
+
 public class BookSection {
 	private String name;
 	private int bookCapacity;
 	private int bookSelfs;
-	private String genre;
+	private Genre genre;
 
 	public BookSection() {
 	};
 
-	public BookSection(String name, int bookCapacity, int bookSelfs, String genre) {
+	public BookSection(String name, int bookCapacity, int bookSelfs, Genre genre) {
 		setBookCapacity(bookCapacity);
 		setBookSelfs(bookSelfs);
 		setGenre(genre);
@@ -40,11 +42,11 @@ public class BookSection {
 		this.name = name;
 	}
 
-	public String getGenre() {
+	public Genre getGenre() {
 		return genre;
 	}
 
-	public void setGenre(String genra) {
+	public void setGenre(Genre genra) {
 		this.genre = genra;
 	}
 

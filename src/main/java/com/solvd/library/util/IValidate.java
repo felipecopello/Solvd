@@ -51,13 +51,15 @@ public interface IValidate {
 		}
 	}
 
-	public static boolean validateBookTaste(ArrayList<String> taste) throws NoStockException {
+	public static boolean validateBookTaste(ArrayList<Genre> clientBookTaste) throws NoStockException {
 		boolean genreAvailable = false;
-		for (String t : taste) {
+		for (Genre t : clientBookTaste) {
 			try {
-				Genre g = Genre.valueOf(t.toUpperCase());
-				genreAvailable = true;
-				LOGGER.info("We actually have " + g + " available");
+				if (clientBookTaste.contains(t)) {
+					genreAvailable = true;
+					LOGGER.info("We actually have " + t + " available");
+				}
+				;
 			} catch (Exception e) {
 				LOGGER.info("Sorry, we dont have any " + t + " books in the library");
 			}

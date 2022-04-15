@@ -2,17 +2,19 @@ package com.solvd.library.entities;
 
 import java.time.LocalDate;
 
+import com.solvd.library.enums.Genre;
+
 public class Book {
 	private Author author;
 	private String title;
 	private String editorial;
 	private LocalDate publishedIn;
-	private String genre;
+	private Genre genre;
 
 	Book() {
 	};
 
-	public Book(Author author, String title, String editorial, String genre) {
+	public Book(Author author, String title, String editorial, Genre genre) {
 		setAuthor(author);
 		setTitle(title);
 		setEditorial(editorial);
@@ -52,11 +54,11 @@ public class Book {
 		this.publishedIn = publishedIn;
 	}
 
-	public String getGenre() {
+	public Genre getGenre() {
 		return genre;
 	}
 
-	public void setGenre(String genre) {
+	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
 

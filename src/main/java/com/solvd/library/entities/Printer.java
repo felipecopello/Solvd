@@ -5,6 +5,7 @@ import com.solvd.library.util.IPrintable;
 public class Printer {
 	private int id;
 	private String model;
+	private String toPrint;
 
 	public Printer() {
 	};
@@ -30,8 +31,16 @@ public class Printer {
 		this.model = model;
 	}
 
-	public static void printThing(IPrintable thing) {
-		thing.print();
+	public String getToPrint() {
+		return toPrint;
+	}
+
+	public void setToPrint(String toPrint) {
+		this.toPrint = toPrint;
+	}
+
+	public void printThing(IPrintable<String> thing) {
+		thing.print(toPrint);
 	}
 
 }

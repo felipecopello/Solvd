@@ -19,6 +19,15 @@ public class Library {
 	public Library() {
 	};
 
+	public Library(String name, ArrayList<String> readingSections, CustomLinkedList<Book> booklist, int computers,
+			int printers) {
+		setName(name);
+		setReadingSections(readingSections);
+		setBooklist(booklist);
+		setComputers(computers);
+		setPrinters(printers);
+	};
+
 	public String getName() {
 		return name;
 	}
@@ -26,10 +35,6 @@ public class Library {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Library(String name, String[] bookSections, String[] readingSections, CustomLinkedList<Book> booklist,
-			int computers, int printers) {
-	};
 
 	public ArrayList<BookSection> getBookSection() {
 		return bookSections;
@@ -39,12 +44,20 @@ public class Library {
 		this.bookSections = bookSections;
 	}
 
+	public void addBookSection(BookSection b) {
+		bookSections.add(b);
+	}
+
 	public ArrayList<String> getReadingSections() {
 		return readingSections;
 	}
 
 	public void setReadingSections(ArrayList<String> readingSections) {
 		this.readingSections = readingSections;
+	}
+
+	public void addReadingSection(String readingSection) {
+		readingSections.add(readingSection);
 	}
 
 	public int getComputers() {
@@ -73,6 +86,10 @@ public class Library {
 
 	public void setBooklist(CustomLinkedList<Book> booklist) {
 		Library.bookList = booklist;
+	}
+
+	public void addBookToList(Book b) {
+		bookList.insert(b);
 	}
 
 }
