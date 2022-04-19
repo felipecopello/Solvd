@@ -1,5 +1,9 @@
 package com.solvd.library.service;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -38,14 +42,14 @@ public class Service {
 
 		Author agatha = new Author("Agatha Christie", 80, 12345678, Genre.CRIMES, Sex.FEMALE);
 
-		Book book1 = new Book(agatha, "And Then There Were None", "Collins Crime Club", Genre.CRIMES);
-		Book book2 = new Book(agatha, "Death on the Nile", "Collins Crime Club", Genre.CRIMES);
+		Book noneBook = new Book(agatha, "And Then There Were None", "Collins Crime Club", Genre.CRIMES);
+		Book nileBook = new Book(agatha, "Death on the Nile", "Collins Crime Club", Genre.CRIMES);
 
-		agatha.addWrittenBook(book1);
-		agatha.addWrittenBook(book2);
+		agatha.addWrittenBook(noneBook);
+		agatha.addWrittenBook(nileBook);
 
-		publicLibrary.addBookToList(book1);
-		publicLibrary.addBookToList(book2);
+		publicLibrary.addBookToList(noneBook);
+		publicLibrary.addBookToList(nileBook);
 
 		LibraryCard libraryCardFelipe = new LibraryCard("Felipe Copello", true);
 		LibraryCard libraryCardPepe = new LibraryCard("Pepe", false);
@@ -83,7 +87,7 @@ public class Service {
 		publicLibrary.setBooklist(clientFelipe.retrieveBook(publicLibrary, "Death on the Nile"));
 
 		Printer lenovoPrinter = new Printer();
-		lenovoPrinter.setToPrint(book1.getTitle() + " was written by " + book1.getAuthor().getName());
+		lenovoPrinter.setToPrint(noneBook.getTitle() + " was written by " + noneBook.getAuthor().getName());
 		IPrintable<String> lambdaPrintable = x -> LOGGER.info(x);
 		lenovoPrinter.printThing(lambdaPrintable);
 
@@ -101,14 +105,26 @@ public class Service {
 			return x;
 		};
 
-		BiFunction<HashSet<Client>, Sex, HashSet<Client>> filterBySexAgeOver30 = (HashSet<Client> x, Sex s) -> {
-			x.stream().filter(client -> client.getGender() == s && client.getAge() > 30).collect(Collectors.toList());
+		BiFunction<HashSet<Client>, Sex, HashSet<Client>> filterBySexAndWrite = (HashSet<Client> x, Sex s) -> {
+			x.stream().filter(client -> client.getGender() == s).collect(Collectors.toList());
+			try {
+				StringBuffer sb = new StringBuffer();
+				BufferedWriter bwr = new BufferedWriter(new FileWriter(new File("serviceOutput.txt")));
+				x.forEach(e -> {
+					sb.append(String.format(e.getName() + "\n"));
+				});
+				bwr.write(sb.toString());
+				bwr.flush();
+				bwr.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return x;
 		};
 
 		securityPedro.filterClients(filterBySex, Sex.MALE);
 		securityPedro.filterClients(filterBySexAndPrint, Sex.MALE);
-		securityPedro.filterClients(filterBySexAgeOver30, Sex.MALE);
+		securityPedro.filterClients(filterBySexAndWrite, Sex.MALE);
 	}
 
 }
