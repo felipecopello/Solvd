@@ -42,14 +42,14 @@ public class Service {
 
 		Author agatha = new Author("Agatha Christie", 80, 12345678, Genre.CRIMES, Sex.FEMALE);
 
-		Book noneBook = new Book(agatha, "And Then There Were None", "Collins Crime Club", Genre.CRIMES);
-		Book nileBook = new Book(agatha, "Death on the Nile", "Collins Crime Club", Genre.CRIMES);
+		Book bookNone = new Book(agatha, "And Then There Were None", "Collins Crime Club", Genre.CRIMES);
+		Book bookNile = new Book(agatha, "Death on the Nile", "Collins Crime Club", Genre.CRIMES);
 
-		agatha.addWrittenBook(noneBook);
-		agatha.addWrittenBook(nileBook);
+		agatha.addWrittenBook(bookNone);
+		agatha.addWrittenBook(bookNile);
 
-		publicLibrary.addBookToList(noneBook);
-		publicLibrary.addBookToList(nileBook);
+		publicLibrary.addBookToList(bookNone);
+		publicLibrary.addBookToList(bookNile);
 
 		LibraryCard libraryCardFelipe = new LibraryCard("Felipe Copello", true);
 		LibraryCard libraryCardPepe = new LibraryCard("Pepe", false);
@@ -87,7 +87,7 @@ public class Service {
 		publicLibrary.setBooklist(clientFelipe.retrieveBook(publicLibrary, "Death on the Nile"));
 
 		Printer lenovoPrinter = new Printer();
-		lenovoPrinter.setToPrint(noneBook.getTitle() + " was written by " + noneBook.getAuthor().getName());
+		lenovoPrinter.setToPrint(bookNone.getTitle() + " was written by " + bookNone.getAuthor().getName());
 		IPrintable<String> lambdaPrintable = x -> LOGGER.info(x);
 		lenovoPrinter.printThing(lambdaPrintable);
 
@@ -117,7 +117,7 @@ public class Service {
 				bwr.flush();
 				bwr.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				LOGGER.error(e.getMessage());
 			}
 			return x;
 		};
