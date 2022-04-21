@@ -58,7 +58,7 @@ public class reflectionTask {
 
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 	}
 }
